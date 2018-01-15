@@ -67,7 +67,7 @@ public class SQLite {
 					+ "Description Text,"
 					+ "Category Text not null,"
 					+ "Edition text not null,"
-					+ "published date not null,"
+					+ "published text not null,"
 					+ "subject text not null,"
 					+ "primary key(Id))");
 			statement.executeUpdate("drop table if exists Person");
@@ -85,7 +85,7 @@ public class SQLite {
 					+ "Id integer unique not null,"
 					+ "BookId Integer not null,"
 					+ "PersonId integer not null,"
-					+ "DateStamp Date not null,"
+					+ "DateStamp string not null,"
 					+ "primary key(Id),"
 					+ "foreign key(BookId) references Book(Id),"
 					+ "foreign key(PersonId) references Person(Id))");
