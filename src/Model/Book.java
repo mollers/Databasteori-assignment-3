@@ -22,17 +22,20 @@ public class Book {
 		this.subject = subject;
 		this.loaned = false;
 	}
+	public int getId() {
+		return this.id;
+	}
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 	public String getCategory() {
-		return category;
+		return this.category;
 	}
 	public String getPublished() {
-		return published;
+		return this.published;
 	}
 	public String getText() {
-		return subject;
+		return this.subject;
 	}
 	public void setLoaned(boolean b) {
 		this.loaned = b;
