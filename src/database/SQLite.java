@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import Model.Book;
+import Model.Loan;
 import Model.Person;
 
 public class SQLite {
@@ -103,8 +104,9 @@ public class SQLite {
 			e.printStackTrace();
 		}
 	}
-	public void addLoan(int id, int coptId, int personId, String dateLoaned, String dateExpire, String dataReturned) {
-		
+	public void addLoan(Loan loan) {
+		this.statement.executeUpdate("insert into Loan values("
+				+ ")");
 	}
 	private void createDatabase(String name) {
 		if(new File(name + ".db").exists()) {
