@@ -11,9 +11,19 @@ public class View {
 		DisplayStartMenu();
 	}
 	
+	public int getInput() 
+	{
+		char c = scan.nextLine().charAt(0);
+		return c;
+	}
+	
+	public char[] getMenuOptions()
+	{
+		return new char[] {'1', '2', '3', '4', '5', '6', 'B', 'q'};
+	}
+	
 	public void DisplayStartMenu()
 	{
-		
 		System.out.println("Start Menu");
 		System.out.println("1: Loan");
 		System.out.println("2: Add");
