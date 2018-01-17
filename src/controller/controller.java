@@ -52,17 +52,17 @@ public class controller {
 			}
 			else if (addInput == addMenuOptions[1])
 			{
-				System.out.println("Please enter a book id.");
+				a_view.displayNext();
 				int id = Integer.parseInt(a_view.getStringInput());
-				System.out.println("Please enter a title of the book.");
+				a_view.displayNext();
 				String title = a_view.getStringInput();
-				System.out.println("Please enter a description of the book.");
+				a_view.displayNext();
 				String description = a_view.getStringInput();
-				System.out.println("Please enter edition of book.");
+				a_view.displayNext();
 				String edition = a_view.getStringInput();
-				System.out.println("Please enter the year the book was published.");
+				a_view.displayNext();
 				String published = a_view.getStringInput();
-				System.out.println("Please enter what shelf number the book belongs to.");
+				a_view.displayNext();
 				int shelf = Integer.parseInt(a_view.getStringInput());
 
 				lib.addBook(id, title, description, edition, published, shelf);

@@ -75,7 +75,30 @@ public class View {
 	{
 		return new char[] {'1', '2', '3', 'B'};
 	}
-	
+	public void displayNext()
+	{
+		System.out.println("Please enter next input.");
+	}
+	public void displayBookInputInfo()
+	{
+		
+	}
+	public void displayPersonInputInfo()
+	{
+		
+	}
+	public void displayAuthorInputInfo()
+	{
+		
+	}
+	public void displayLoanInputInfo()
+	{
+		
+	}
+	public void displayCopyInputInfo()
+	{
+		
+	}
 	public void DisplayStartMenu()
 	{
 		System.out.println("Start Menu");
