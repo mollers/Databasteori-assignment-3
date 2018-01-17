@@ -7,6 +7,11 @@ public class Library {
 	private Book book;
 	private Person person;
 	private Loan loan;
+	
+	public Library(SQLite sql)
+	{
+		this.db = sql;
+	}
 
 	public void addAuthor(int id, String name)
 	{
