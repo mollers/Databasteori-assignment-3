@@ -3,7 +3,6 @@ package Model;
 public class Book {
 	private int id;
 	private String title;
-	private boolean loaned;
 	private String description;
 	private String edition;
 	private String published;
@@ -29,15 +28,8 @@ public class Book {
 	public String getPublished() {
 		return this.published;
 	}
-
-	public void setLoaned(boolean b) {
-		this.loaned = b;
-	}
 	public String getTitle() {
 		return this.title;
-	}
-	public boolean getLoaned() {
-		return this.loaned;
 	}
 	public String getEdition() {
 		return this.edition;

@@ -1,9 +1,18 @@
 package View;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import Model.Author;
+import Model.Book;
+import Model.Loan;
+import Model.Person;
 
 public class View {
 	
+	public View() {
+		
+	}
 	Scanner scan = new Scanner(System.in);
 	public void DisplayWelcomeMessage()
 	{
@@ -11,9 +20,64 @@ public class View {
 		DisplayStartMenu();
 	}
 	
+	public int getInput() 
+	{
+		char c = scan.nextLine().charAt(0);
+		return c;
+	}
+	
+	public int getIntInput()
+	{
+		int input = scan.nextInt();
+		return input;
+	}
+	
+	public String getStringInput()
+	{
+		String input = scan.nextLine();
+		return input;
+	}
+	
+	public char[] getStartMenuOptions()
+	{
+		return new char[] {'1', '2', '3', '4', 'q'};
+	}
+	
+	public char[] getLoanMenyOptions()
+	{
+		return new char[] {'1', '2', 'B'};
+	}
+	
+	public char[] getAddMenuOptions()
+	{
+		return new char[] {'1', '2', '3', '4', '5', '6', 'B'};
+	}
+	
+	public char[] getRemoveMenuOptions()
+	{
+		return new char[] {'1', '2', '3', 'B'};
+	}
+	
+	public char[] getFindMenuOptions()
+	{
+		return new char[] {'1', '2', '3', 'B'};
+	}
+	
+	public char[] getFindAuthorMenuOptions()
+	{
+		return new char[] {'1', '2', '3', '4', '5', '6', 'B'};
+	}
+	public char[] getFindBookMenuOptions()
+	{
+		return new char[] {'1', '2', '3', '4', '5', 'B'};
+	}
+	public char[] getFindPersonMenuOptions()
+	{
+		return new char[] {'1', '2', '3', 'B'};
+	}
+	
 	public void DisplayStartMenu()
 	{
-		
 		System.out.println("Start Menu");
 		System.out.println("1: Loan");
 		System.out.println("2: Add");
@@ -77,7 +141,7 @@ public class View {
 		System.out.println("2: Find books by title");
 		System.out.println("3: Find books under specific category");
 		System.out.println("4: Find book by ID");
-		System.out.println("5: Check book copies (check if books are in for loning)");
+		System.out.println("5: Check book copies (check if books are in for loaning)");
 		System.out.println("B: Go to start menu");
 		System.out.println("Select option by entering the number followed by enter");
 	}
@@ -92,6 +156,36 @@ public class View {
 		System.out.println("B: Go to start menu");
 		System.out.println("Select option by entering the number followed by enter");
 	}
-
-
+	public void DisplayPersonList(ArrayList<Person> persons) {
+		TableList tableList = new TableList(7, "ID", "NAME", "MAIL", "PHONE", "ADRESS", "CITY", "ZIP").sortBy(0).withUnicode(true);
+		for(int i = 0; i < persons.size(); i++) {
+			Person current = persons.get(i);
+			tableList.addRow(String.valueOf(current.getId()), current.getName(), current.getMail(), current.getPhoneNr(), current.getAdress(), current.getCity(), current.getZIP());
+		}
+		tableList.print();
+	}
+	public void DisplayBookList(ArrayList<Book> books) {
+		TableList tableList = new TableList(6, "ID", "TITLE", "DESCRIPTION", "EDITION", "PUBLISHED", "SHELF NUMBER").sortBy(0).withUnicode(true);
+		for(int i = 0; i < books.size(); i++) {
+			Book current = books.get(i);
+			tableList.addRow(String.valueOf(current.getId()), current.getTitle(), current.getDescription(), current.getEdition(), current.getPublished(), String.valueOf(current.getShelfNo()));
+		}
+		tableList.print();
+	}
+	public void DisplayLoanList(ArrayList<Loan> loans) {
+		TableList tableList = new TableList(6, "ID", "CopyId", "PersonId", "Data Loaned", "Date Loan Expire", "Date Returned").sortBy(0).withUnicode(true);
+		for(int i = 0; i < loans.size(); i++) {
+			Loan current = loans.get(i);
+			tableList.addRow(String.valueOf(current.getId()), String.valueOf(current.getCopyId()), String.valueOf(current.getPersonId()), current.getDateLoaned(), current.getDataExpire(), current.getDateReturned());
+		}
+		tableList.print();
+	}
+	public void DisplayAuthorList(ArrayList<Author> authors) {
+		TableList tableList = new TableList(2, "ID", "NAME").sortBy(0).withUnicode(true);
+		for(int i = 0; i < authors.size(); i++) {
+			Author current = authors.get(i);
+			tableList.addRow(String.valueOf(current.getId()), current.getName());
+		}
+		tableList.print();
+	}
 }
