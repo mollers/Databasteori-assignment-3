@@ -15,25 +15,25 @@ public class Library {
 
 	public void addAuthor(int id, String name)
 	{
-		db.add().author(id, name);
+		db.author().add(id, name);
 	}
 	public void addBook(int id,String title,  String description, String edition, String published,  int shelf) {
 		this.book = new Book(id, title, description, edition, published, shelf);
-		db.add().book(book);
+		db.book().add(book);
 	}
 	public void addBookCopy(int copyId, int bookId)
 	{
-		db.add().copy(copyId, bookId);
+		db.book().addCopy(copyId, bookId);
 	}
 	public void addPerson(int id, String zIP, String city, String adress, String name, String mail, String phoneNr) {
 		this.person = new Person(id, zIP, city, adress, name, mail, phoneNr);
-		db.add().person(person);
+		db.person().add(person);
 	}
 	public void addLoan(int id, int copyId, int personId, String dateLoaned, String dataExpire, String dateReturned) {
 		this.loan = new Loan(id, copyId, personId, dateLoaned, dataExpire, dateReturned);
-		db.add().loan(loan);
+		db.loan().add(loan);
 	}
 	public void addCategoryToBook(int bookId, String[] categories) {
-		db.add().category(bookId, categories);
+		db.book().addCategory(bookId, categories);
 	}
 }
