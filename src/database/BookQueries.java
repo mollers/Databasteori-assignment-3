@@ -1,65 +1,69 @@
 package database;
 
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 import Model.Book;
-import Model.Person;
+import Model.Copy;
 
-public class SelectQueries {
+public class BookQueries {
 	private Statement statement;
-	public SelectQueries(Statement statement) {
+	public BookQueries(Statement statement) {
 		this.statement = statement;
 	}
-	public ArrayList<Person> selectAllPersons() {
+	public void add(Book book) {
 		try {
-			ResultSet persons = this.statement.executeQuery("Select * from Person");
-			return this.toPersonArrayList(persons);
+			statement.executeUpdate("insert into Book values("
+					+ book.getId() + ","
+					+ "'" + book.getTitle() + "',"
+					+ "'" + book.getDescription() + "',"
+					+ book.getShelfNo() + ","
+					+"'" + book.getEdition() + "',"
+					+ "'" + book.getPublished() + "'"
+					+ ")");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new ArrayList<Person>();
 		}
 	}
-	public ArrayList<Person> selectPersonsByName(String name){
+	public void addAuthors(int bookId, int[] authorsIds) {
+		for(int i = 0; i < authorsIds.length; i++) {
+			try {
+				statement.executeUpdate("insert into BookAuthors values("
+						+ authorsIds[i] + ","
+						+ bookId + ")");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	public void addCategory(int book, String[] categorys) {
+		for(int i = 0; i < categorys.length; i++) {
+			try {
+				statement.executeUpdate("insert into Category values("
+						+ "'" + categorys[i] + "',"
+						+ book + ")");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	public void addCopy( int copyId, int bookId) {
 		try {
-			ResultSet persons = this.statement.executeQuery("Select * from Person where Name like '%"+name+"%'" );
-			return this.toPersonArrayList(persons);
+			statement.executeUpdate("insert into Copy values("
+					+ copyId + "," 
+					+ bookId + ","
+					+ 1+")");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new ArrayList<Person>();
 		}
 	}
-	public Person selectPersonById(int id) {
-		try {
-			ResultSet rs = this.statement.executeQuery("select * from Person where Id = " + id);
-			return (Person)this.toPersonArrayList(rs).get(0);
-		} catch (SQLException e) {
-			
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return new Person();
-		}
-	}
-	public Person selectPersonByMail(String mail) {
-		try {
-			ResultSet rs = this.statement.executeQuery("Select * from Person where Email like '%"+mail+"%'" );
-			return (Person)this.toPersonArrayList(rs).get(0);
-		} catch (SQLException e) {
-			
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return new Person();
-		} catch (IndexOutOfBoundsException e) {
-			System.out.println("No person with that mail");
-			return new Person();
-		}
-	}
-	public ArrayList<Book> selectAllBooks() {
+	public ArrayList<Book> getAll() {
 		try {
 			ResultSet books = this.statement.executeQuery("Select * from Book");
 			return this.toBookArrayList(books);
@@ -73,7 +77,7 @@ public class SelectQueries {
 			return new ArrayList<Book>();
 		}
 	}
-	public Book selectBookById(int id) {
+	public Book getById(int id) {
 		try {
 			ResultSet rs = this.statement.executeQuery("select * from Book where Id = " + id);
 			return (Book)this.toBookArrayList(rs).get(0);
@@ -84,7 +88,7 @@ public class SelectQueries {
 			return new Book(id, null, null, null, null, id);
 		}
 	}
-	public ArrayList<Book> selectBookByTitle(String Title){
+	public ArrayList<Book> getByTitle(String Title){
 		try {
 			ResultSet books = this.statement.executeQuery("Select * from Book where Title like '%"+Title+"%'" );
 			return this.toBookArrayList(books);
@@ -94,7 +98,7 @@ public class SelectQueries {
 			return new ArrayList<Book>();
 		}
 	}
-	public ArrayList<Book> selectBookByCatagory(String Category){
+	public ArrayList<Book> getByCatagory(String Category){
 		try {
 			ResultSet books = this.statement.executeQuery("Select * from Book where Id in(select Bookid from Category where Name LIKE '%"+Category+"%')");
 			return this.toBookArrayList(books);
@@ -104,28 +108,32 @@ public class SelectQueries {
 			return new ArrayList<Book>();
 		}
 	}
-	private ArrayList<Person> toPersonArrayList(ResultSet persons){
-		ArrayList<Person> pers = new ArrayList<Person>();
+	public ArrayList<Copy>getCopys(int id){
 		try {
-			while(persons.next()) {
-				int id = persons.getInt("Id");
-				String name = persons.getString("Name");
-				String ZIP = persons.getString("ZIP");
-				String city = persons.getString("City");
-				String adress = persons.getString("Adress");
-				String mail = persons.getString("Email");
-				String phoneNr = persons.getString("phoneNo");
-				Person person = new Person(id, ZIP, city, adress, name, mail, phoneNr );
-				pers.add(person);
-			}
+			ResultSet rs = this.statement.executeQuery("select * from Copy where BookId=" +id);
+			return this.toCopyArrayList(rs);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return pers;
+		return null;
+	}
+	private ArrayList<Copy> toCopyArrayList(ResultSet rs) {
+		ArrayList<Copy> copies = new ArrayList<Copy>();
+		try {
+			while(rs.next()) {
+				int id = rs.getInt("Id");
+				int bookId = rs.getInt("BookId");
+				int available = rs.getInt("Available");
+				copies.add(new Copy(id, bookId, available));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return copies;
 	}
 	private ArrayList<Book> toBookArrayList(ResultSet books){
-		ArrayList<Book> bok = new ArrayList<Book>();
+		ArrayList<Book> book = new ArrayList<Book>();
 		try {
 			while(books.next()) {
 				int id = books.getInt("Id");
@@ -134,14 +142,13 @@ public class SelectQueries {
 				int ShelfNo = books.getInt("ShelfNo");
 				String Edition = books.getString("Edition");
 				String published = books.getString("published");
-				Book book = new Book(id, Title, Description, published, Edition, ShelfNo);
-				bok.add(book);
+				Book bookk = new Book(id, Title, Description, published, Edition, ShelfNo);
+				book.add(bookk);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return bok;
+		return book;
 	}
-
 }
