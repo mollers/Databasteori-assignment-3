@@ -131,6 +131,7 @@ public class View {
 		System.out.println("1: Check author list");
 		System.out.println("2: Authors that written a book");
 		System.out.println("3: Find authors by name");
+		System.out.println("4: Find authors by Id");
 		System.out.println("B: Go to start menu");
 		System.out.println("Select option by entering the number followed by enter");
 	}
@@ -148,10 +149,11 @@ public class View {
 	public void DisplayFindPersonMenu()
 	{
 		System.out.println("Find Person Menu");
-		System.out.println("1: Find by name");
-		System.out.println("2: Find by ID");
-		System.out.println("3: Find by mail");
-		System.out.println("3: Check persons loaned books");
+		System.out.println("1: Get all persons");
+		System.out.println("2: Find by name");
+		System.out.println("3: Find by ID");
+		System.out.println("4: Find by mail");
+		System.out.println("5: Check persons loaned books");
 		System.out.println("B: Go to start menu");
 		System.out.println("Select option by entering the number followed by enter");
 	}

@@ -68,7 +68,8 @@ public class CreateDatabase {
 			statement.executeUpdate("create table Copy ("
 					+ "Id integer not null unique,"
 					+ "BookId integer not null,"
-					+ "foreign key(BookId) references Book(id)"
+					+ "Available integer not null,"
+					+ "foreign key(BookId) references Book(id),"
 					+ "primary key(Id))");
 			statement.executeUpdate("drop table if exists Loan");
 			System.out.println("Creating new table Loan");

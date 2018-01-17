@@ -2,6 +2,7 @@ package Program;
 
 import java.util.ArrayList;
 
+import Model.Author;
 import Model.Book;
 import Model.Loan;
 import Model.Person;
@@ -19,7 +20,12 @@ public class TestDatabast {
 		String [] categorys = {"Strunt", "kiss och bajs"};
 		Book book = new Book(1, "Bajsboken", "Gissa bajset","First", "2019-01-31", 10 );
 		Loan loan = new Loan(1, 101, 1, "2017-10-12", "2017-10-22", null);
-		/*db.add().person(andreas);
+		/*Loan loan2 = new Loan(2, 101, 1, "2017-10-12", "2017-10-22", "2017-10-22");
+		db.add().copy(102, 1);
+		Loan loan3 = new Loan(3, 102, 1, "2017-10-12", "2017-10-22", "2017-10-22");
+		db.add().loan(loan2);
+		db.add().loan(loan3);
+		db.add().person(andreas);
 		db.add().person(Bengtsson);
 		db.add().person(Mattan);
 		db.add().book(book);
@@ -40,6 +46,64 @@ public class TestDatabast {
 		
 		Person mailPerson = db.select().selectPersonByMail("hans");
 		System.out.println(mailPerson.getId() +" " + mailPerson.getName() + " " + mailPerson.getMail() );
+		
+		ArrayList<Book> allBooks = db.select().selectAllBooks();
+		for(int i = 0; i < allBooks.size(); i++ ) {
+			Book temp = allBooks.get(i);
+			System.out.println("| Id | Title | Description | Edition | Published | ShelfNo |");
+			System.out.println("| " + temp.getId() + " | " + temp.getTitle() + " | " + temp.getDescription() + " |" + temp.getEdition() + " |" + temp.getPublished() + " |" + temp.getShelfNo() + " |");
+		}
+		
+		Book idBook = db.select().selectBookById(1);
+		System.out.println("| Id | Title | Description | Edition | Published | ShelfNo |");
+		System.out.println("| " + idBook.getId() + " | " + idBook.getTitle() + " | " + idBook.getDescription() + " |" + idBook.getEdition() + " |" + idBook.getPublished() + " |" + idBook.getShelfNo() + " |");
+		
+		ArrayList<Book> BookTitle = db.select().selectBookByTitle("bajs");
+		for(int i = 0; i < BookTitle.size(); i++ ) {
+			Book temp = BookTitle.get(i);
+			System.out.println("| Id | Title | Description | Edition | Published | ShelfNo |");
+			System.out.println("| " + temp.getId() + " | " + temp.getTitle() + " | " + temp.getDescription() + " |" + temp.getEdition() + " |" + temp.getPublished() + " |" + temp.getShelfNo() + " |");
+		}
+		System.out.println("this is for cate");
+		ArrayList<Book> BookinCatagory = db.select().selectBookByCatagory("kiss och bajs");
+		for(int i = 0; i < BookinCatagory.size(); i++ ) {
+			Book temp = BookinCatagory.get(i);
+			System.out.println("| Id | Title | Description | Edition | Published | ShelfNo |");
+			System.out.println("| " + temp.getId() + " | " + temp.getTitle() + " | " + temp.getDescription() + " |" + temp.getEdition() + " |" + temp.getPublished() + " |" + temp.getShelfNo() + " |");
+		}
+		
+		System.out.println("this is for cate");
+		ArrayList<Author> AllAuthors = db.select().selectAllAuthor();
+		for(int i = 0; i < AllAuthors.size(); i++ ) {
+			Author temp = AllAuthors.get(i);
+			System.out.println("| Id | name |");
+			System.out.println("| " + temp.getId() + " | " + temp.getName() + " | ");
+		}
+		
+		System.out.println("this is for cate");
+		ArrayList<Author> authorsOnBook = db.select().selectAuthorBybook(1);
+		for(int i = 0; i < authorsOnBook.size(); i++ ) {
+			Author temp = authorsOnBook.get(i);
+			System.out.println("| Id | name |");
+			System.out.println("| " + temp.getId() + " | " + temp.getName() + " | ");
+		}
+		
+		System.out.println("this is for cate");
+		ArrayList<Author> authorsId = db.select().selectAuthorById(1);
+		for(int i = 0; i < authorsId.size(); i++ ) {
+			Author temp = authorsId.get(i);
+			System.out.println("| Id | name |");
+			System.out.println("| " + temp.getId() + " | " + temp.getName() + " | ");
+		}
+		
+		System.out.println("this is for cate");
+		ArrayList<Author> authorsname = db.select().selectAuthorByName("andre");
+		for(int i = 0; i < authorsname.size(); i++ ) {
+			Author temp = authorsname.get(i);
+			System.out.println("| Id | name |");
+			System.out.println("| " + temp.getId() + " | " + temp.getName() + " | ");
+		}
+		
 	}
 
 }
