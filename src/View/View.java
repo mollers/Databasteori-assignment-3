@@ -23,6 +23,18 @@ public class View {
 		return c;
 	}
 	
+	public int getIntInput()
+	{
+		int input = scan.nextInt();
+		return input;
+	}
+	
+	public String getStringInput()
+	{
+		String input = scan.nextLine();
+		return input;
+	}
+	
 	public char[] getStartMenuOptions()
 	{
 		return new char[] {'1', '2', '3', '4', 'q'};

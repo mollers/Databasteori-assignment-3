@@ -1,14 +1,17 @@
 package controller;
 
+import Model.Library;
 import View.View;
 import database.SQLite;
 
 public class controller {
+	private Library lib;
 	private View a_view;
 	private SQLite sql;
 
-	public boolean runLibrarySystem(SQLite sql, View a_view)
+	public boolean runLibrarySystem(Library lib, SQLite sql, View a_view)
 	{
+		this.lib = lib;
 		this.sql = sql;
 		this.a_view = a_view;
 		a_view.DisplayWelcomeMessage();
@@ -43,19 +46,37 @@ public class controller {
 			
 			if (addInput == addMenuOptions[0])
 			{
-				
+				int copyId = a_view.getIntInput();
+				int bookId = a_view.getIntInput();
+				lib.addBookCopy(copyId, bookId);
 			}
 			else if (addInput == addMenuOptions[1])
 			{
-				
+				int id = a_view.getIntInput();
+				String title = a_view.getStringInput();
+				String description = a_view.getStringInput();
+				String edition = a_view.getStringInput();
+				String published = a_view.getStringInput();
+				int shelf = a_view.getIntInput();
+				String something = a_view.getStringInput();
+				lib.addBook(id, title, description, edition, published, shelf);
 			}
 			else if (addInput == addMenuOptions[2])
 			{
-				
+				int id = a_view.getIntInput();
+				String name = a_view.getStringInput();
+				lib.addAuthor(id, name);
 			}
 			else if (addInput == addMenuOptions[3])
 			{
-				
+				int id = a_view.getIntInput();
+				String zIP = a_view.getStringInput();
+				String city = a_view.getStringInput();
+				String adress = a_view.getStringInput();
+				String name = a_view.getStringInput();
+				String mail = a_view.getStringInput();
+				String phoneNr = a_view.getStringInput();
+				lib.addPerson(id, zIP, city, adress, name, mail, phoneNr);
 			}
 			else if (addInput == addMenuOptions[4])
 			{
