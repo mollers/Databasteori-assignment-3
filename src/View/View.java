@@ -141,7 +141,13 @@ public class View {
 		System.out.println("Select option by entering the number followed by enter");
 	}
 	public void DisplayPersonList(ArrayList<Person> persons) {
+		TableList tableList = new TableList(7, "ID", "NAME", "MAIL", "PHONE", "ADRESS", "CITY", "ZIP").withUnicode(true);
+		for(int i = 0; i < persons.size(); i++) {
+			Person current = persons.get(i);
+			tableList.addRow(String.valueOf(current.getId()), current.getName(), current.getMail(), current.getPhoneNr(), current.getAdress(), current.getCity(), current.getZIP());
+		}
 		
+		tableList.print();
 	}
 
 }
