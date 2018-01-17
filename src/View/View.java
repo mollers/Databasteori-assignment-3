@@ -17,9 +17,52 @@ public class View {
 		DisplayStartMenu();
 	}
 	
+	public int getInput() 
+	{
+		char c = scan.nextLine().charAt(0);
+		return c;
+	}
+	
+	public char[] getStartMenuOptions()
+	{
+		return new char[] {'1', '2', '3', '4', 'q'};
+	}
+	
+	public char[] getLoanMenyOptions()
+	{
+		return new char[] {'1', '2', 'B'};
+	}
+	
+	public char[] getAddMenuOptions()
+	{
+		return new char[] {'1', '2', '3', '4', '5', '6', 'B', 'q'};
+	}
+	
+	public char[] getRemoveMenuOptions()
+	{
+		return new char[] {'1', '2', '3', 'B'};
+	}
+	
+	public char[] getFindMenuOptions()
+	{
+		return new char[] {'1', '2', '3', 'B'};
+	}
+	
+	public char[] getFindAuthorMenuOptions()
+	{
+		return new char[] {'1', '2', '3', '4', '5', '6', 'B', 'q'};
+	}
+	public char[] getFindBookMenuOptions()
+	{
+		return new char[] {'1', '2', '3', '4', '5', 'B'};
+	}
+	public char[] getFindPersonMenuOptions()
+	{
+		return new char[] {'1', '2', '3', 'B'};
+	}
+	
 	public void DisplayStartMenu()
 	{
-		
 		System.out.println("Start Menu");
 		System.out.println("1: Loan");
 		System.out.println("2: Add");
