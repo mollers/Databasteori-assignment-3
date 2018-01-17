@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import Model.Author;
 import Model.Book;
 import Model.Person;
 
@@ -104,27 +105,55 @@ public class SelectQueries {
 			return new ArrayList<Book>();
 		}
 	}
-	public int selectBooksCopyOnLoan(int Id){
+	public ArrayList<Author> selectAllAuthor() {
 		try {
-			ResultSet book = this.statement.executeQuery("SELECT * from Copy where Id in(select CopyId from Loan where CopyId in(select id from copy where "
-					+ "BookId = "+ Id +" ) and DataReturned not like '%null%')");
-			 ResultSetMetaData rsmd = book.getMetaData();
-			   System.out.println("querying SELECT * FROM XXX");
-			   int columnsNumber = rsmd.getColumnCount();
-			   while (book.next()) {
-			       for (int i = 1; i <= columnsNumber; i++) {
-			           if (i > 1) System.out.print(",  ");
-			           String columnValue = book.getString(i);
-			           System.out.print(columnValue + " " + rsmd.getColumnName(i));
-			       }
-			   }
-			return book.getFetchSize();
+			ResultSet books = this.statement.executeQuery("Select * from Author");
+			return this.toAuthorArrayList(books);
+		} catch (SQLException e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new ArrayList<Author>();
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("No person with that mail");
+			return new ArrayList<Author>();
+		}
+	}
+	
+	public ArrayList<Author> selectAuthorBybook(int Id){
+		try {
+			ResultSet author = this.statement.executeQuery("Select * from Author where Id in(select AuthorId from BookAuthors where BookId ="+Id+")");
+			return this.toAuthorArrayList(author);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return 0;
+			return new ArrayList<Author>();
 		}
 	}
+	
+	public ArrayList<Author> selectAuthorById(int Id){
+		try {
+			ResultSet author = this.statement.executeQuery("Select * from Author where Id ="+ Id);
+			return this.toAuthorArrayList(author);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new ArrayList<Author>();
+		}
+	}
+	
+	public ArrayList<Author> selectAuthorByName(String name){
+		try {
+			ResultSet author = this.statement.executeQuery("Select * from Author where Name like '%"+ name +"%' ");
+			return this.toAuthorArrayList(author);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new ArrayList<Author>();
+		}
+	}
+	
+	
 	private ArrayList<Person> toPersonArrayList(ResultSet persons){
 		ArrayList<Person> pers = new ArrayList<Person>();
 		try {
@@ -163,6 +192,21 @@ public class SelectQueries {
 			e.printStackTrace();
 		}
 		return bok;
+	}
+	private ArrayList<Author> toAuthorArrayList(ResultSet authors){
+		ArrayList<Author> auth = new ArrayList<Author>();
+		try {
+			while(authors.next()) {
+				int id = authors.getInt("Id");
+				String name = authors.getString("Name");
+				Author person = new Author(id, name );
+				auth.add(person);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return auth;
 	}
 
 }
