@@ -52,7 +52,7 @@ public class controller {
 			}
 			else if (addInput == addMenuOptions[1])
 			{
-				a_view.displayNext();
+				a_view.displayBookInputInfo();
 				int id = Integer.parseInt(a_view.getStringInput());
 				a_view.displayNext();
 				String title = a_view.getStringInput();

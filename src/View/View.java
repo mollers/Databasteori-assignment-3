@@ -81,7 +81,7 @@ public class View {
 	}
 	public void displayBookInputInfo()
 	{
-		
+		System.out.println("Please enter info in following order: id, title, description, edition, published, shelf");
 	}
 	public void displayPersonInputInfo()
 	{
