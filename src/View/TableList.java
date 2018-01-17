@@ -1,4 +1,4 @@
-package com.github.mrebhan.crogamp.cli;
+package View;
 
 import java.util.ArrayList;
 import java.util.Comparator;
