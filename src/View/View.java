@@ -1,9 +1,15 @@
 package View;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import Model.Person;
 
 public class View {
 	
+	public View() {
+		
+	}
 	Scanner scan = new Scanner(System.in);
 	public void DisplayWelcomeMessage()
 	{
@@ -134,6 +140,8 @@ public class View {
 		System.out.println("B: Go to start menu");
 		System.out.println("Select option by entering the number followed by enter");
 	}
-
+	public void DisplayPersonList(ArrayList<Person> persons) {
+		
+	}
 
 }
