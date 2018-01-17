@@ -10,36 +10,38 @@ public class controller {
 		this.a_view = a_view;
 		a_view.DisplayWelcomeMessage();
 		
-		char[] menuOptions = a_view.getMenuOptions();
+		char[] menuOptions = a_view.getStartMenuOptions();
 		int input = a_view.getInput();
 		
 		if (input == menuOptions[0])
 		{
+			a_view.DisplayLoanMenu();
+			char[] loanMenuOptions = a_view.getLoanMenyOptions();
+			int loanInput = a_view.getInput();
 			
+			while (loanInput != loanMenuOptions[2])
+			{
+				if (loanInput == loanMenuOptions[0])
+				{
+					
+				}
+				else if (loanInput == loanMenuOptions[1])
+				{
+					
+				}
+			}
 		}
 		else if (input == menuOptions[1])
 		{
-			
+			a_view.DisplayAddMenu();
 		}
 		else if (input == menuOptions[2])
 		{
-			
+			a_view.DisplayRemoveMenu();
 		}
 		else if (input == menuOptions[3])
 		{
-			
-		}
-		else if (input == menuOptions[4])
-		{
-			
-		}
-		else if (input == menuOptions[5])
-		{
-			
-		}
-		else if (input == menuOptions[6])
-		{
-			
+			a_view.DisplayFindMenu();
 		}
 		
 		return input != menuOptions[7];

@@ -17,9 +17,42 @@ public class View {
 		return c;
 	}
 	
-	public char[] getMenuOptions()
+	public char[] getStartMenuOptions()
+	{
+		return new char[] {'1', '2', '3', '4', 'q'};
+	}
+	
+	public char[] getLoanMenyOptions()
+	{
+		return new char[] {'1', '2', 'B'};
+	}
+	
+	public char[] getAddMenuOptions()
 	{
 		return new char[] {'1', '2', '3', '4', '5', '6', 'B', 'q'};
+	}
+	
+	public char[] getRemoveMenuOptions()
+	{
+		return new char[] {'1', '2', '3', 'B'};
+	}
+	
+	public char[] getFindMenuOptions()
+	{
+		return new char[] {'1', '2', '3', 'B'};
+	}
+	
+	public char[] getFindAuthorMenuOptions()
+	{
+		return new char[] {'1', '2', '3', '4', '5', '6', 'B', 'q'};
+	}
+	public char[] getFindBookMenuOptions()
+	{
+		return new char[] {'1', '2', '3', '4', '5', 'B'};
+	}
+	public char[] getFindPersonMenuOptions()
+	{
+		return new char[] {'1', '2', '3', 'B'};
 	}
 	
 	public void DisplayStartMenu()
