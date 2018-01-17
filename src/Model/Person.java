@@ -9,6 +9,9 @@ public class Person {
 	private String mail;
 	private String phoneNr;
 	
+	public Person () {
+		
+	}
 	public Person(int id, String zIP, String city, String adress, String name, String mail, String phoneNr) {
 		this.id = id;
 		this.ZIP = zIP;

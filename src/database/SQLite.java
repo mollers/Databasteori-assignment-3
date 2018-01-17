@@ -11,6 +11,7 @@ public class SQLite{
 	private Statement statement = null;
 	private CreateDatabase createDatabase;
 	private AddQueries addQuery;
+	private SelectQueries selectQuery;
 	public SQLite(String DBname) {
 		try {
 			
@@ -23,6 +24,7 @@ public class SQLite{
 			}
 			this.statement = connection.createStatement();
 			this.addQuery = new AddQueries(this.statement);
+			this.selectQuery = new SelectQueries(this.statement);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -31,6 +33,9 @@ public class SQLite{
 	}
 	public AddQueries add() {
 		return this.addQuery;
+	}
+	public SelectQueries select() {
+		return this.selectQuery;
 	}
 
 }

@@ -19,19 +19,18 @@ public class CreateDatabase {
 		
 	}
 	public Connection createTables() {
-		System.out.println("Creating database");
 		try {
 			
 			
 			this.statement.setQueryTimeout(30);
 			statement.executeUpdate("drop table if exists Author");
-			System.out.println("Creating new table");
+			System.out.println("Creating new table Author");
 			statement.executeUpdate("create table Author("
 					+ "Id integer not null unique,"
 					+ "Name text not null,"
 					+ "primary key(Id))");
 			statement.executeUpdate("drop table if exists Book");
-			System.out.println("Creating new table");
+			System.out.println("Creating new table Book");
 			statement.executeUpdate("create table Book("
 					+ "Id Integer unique not null,"
 					+ "Title Text not null,"
@@ -41,18 +40,20 @@ public class CreateDatabase {
 					+ "published Text not null,"
 					+ "primary key(Id))");
 			statement.executeUpdate("drop table if exists Category");
-			System.out.println("Creating new table");
+			System.out.println("Creating new table Category");
 			statement.executeUpdate("create table Category("
 					+ "Name text not null ,"
 					+ "BookId integer not null,"
 					+ "foreign key(BookId) references Book(id))");
 			statement.executeUpdate("drop table if exists BookAuthors");
+			System.out.println("Creating new table BookAuthors");
 			statement.executeUpdate("create table BookAuthors("
 					+ "AuthorId integer not null,"
 					+ "BookId integer not null,"
 					+ "foreign key(AuthorId) references Author(id),"
 					+ "foreign key(BookId) references Book(Id))");
 			statement.executeUpdate("drop table if exists Person");
+			System.out.println("Creating new table Person");
 			statement.executeUpdate("create table Person("
 					+ "Id integer unique not null,"
 					+ "Name text not null,"
@@ -63,12 +64,14 @@ public class CreateDatabase {
 					+ "ZIP text not null,"
 					+ "primary key(Id))");
 			statement.executeUpdate("drop table if exists Copy");
+			System.out.println("Creating new table Copy");
 			statement.executeUpdate("create table Copy ("
 					+ "Id integer not null unique,"
 					+ "BookId integer not null,"
 					+ "foreign key(BookId) references Book(id)"
 					+ "primary key(Id))");
 			statement.executeUpdate("drop table if exists Loan");
+			System.out.println("Creating new table Loan");
 			statement.executeUpdate("create table Loan("
 					+ "Id integer unique not null,"
 					+ "CopyId Integer not null,"
