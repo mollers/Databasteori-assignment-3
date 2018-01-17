@@ -12,7 +12,16 @@ public class AuthorQueries {
 	public AuthorQueries(Statement statement) {
 		this.statement = statement;
 	}
-	
+	public void add(int id, String name) {
+		try {
+			statement.executeUpdate("insert into Author values("
+					+ id + "," 
+					+ "'" + name + "' )");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public ArrayList<Author> getAll() {
 		try {
 			ResultSet books = this.statement.executeQuery("Select * from Author");
