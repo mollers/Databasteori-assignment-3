@@ -9,8 +9,8 @@ public class Program {
 
 	public static void main(String[] args) {
 		String database = "test";
-		Library lib = new Library();
 		SQLite sql = new SQLite(database);
+		Library lib = new Library(sql);
 		View v = new View();
 		controller c = new controller();
 		
