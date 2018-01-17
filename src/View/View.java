@@ -29,7 +29,7 @@ public class View {
 	
 	public char[] getAddMenuOptions()
 	{
-		return new char[] {'1', '2', '3', '4', '5', '6', 'B', 'q'};
+		return new char[] {'1', '2', '3', '4', '5', '6', 'B'};
 	}
 	
 	public char[] getRemoveMenuOptions()
@@ -44,7 +44,7 @@ public class View {
 	
 	public char[] getFindAuthorMenuOptions()
 	{
-		return new char[] {'1', '2', '3', '4', '5', '6', 'B', 'q'};
+		return new char[] {'1', '2', '3', '4', '5', '6', 'B'};
 	}
 	public char[] getFindBookMenuOptions()
 	{
