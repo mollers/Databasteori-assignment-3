@@ -82,7 +82,8 @@ public class AddQueries {
 		try {
 			statement.executeUpdate("insert into Copy values("
 					+ copyId + "," 
-					+ bookId + ")");
+					+ bookId + ","
+					+ 1+")");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -97,6 +98,9 @@ public class AddQueries {
 					+ "'" + loan.getDateLoaned() + "'," 
 					+ "'" + loan.getDataExpire() + "',"
 					+ "'" + loan.getDateReturned() + "')");
+			statement.executeUpdate("update Copy "
+					+ "set Available = 0"
+					+ " where Id ="+loan.getCopyId());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
