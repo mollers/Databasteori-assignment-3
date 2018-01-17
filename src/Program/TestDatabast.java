@@ -2,6 +2,7 @@ package Program;
 
 import java.util.ArrayList;
 
+import Model.Author;
 import Model.Book;
 import Model.Loan;
 import Model.Person;
@@ -19,7 +20,7 @@ public class TestDatabast {
 		String [] categorys = {"Strunt", "kiss och bajs"};
 		Book book = new Book(1, "Bajsboken", "Gissa bajset","First", "2019-01-31", 10 );
 		Loan loan = new Loan(1, 101, 1, "2017-10-12", "2017-10-22", null);
-		Loan loan2 = new Loan(2, 101, 1, "2017-10-12", "2017-10-22", "2017-10-22");
+		/*Loan loan2 = new Loan(2, 101, 1, "2017-10-12", "2017-10-22", "2017-10-22");
 		db.add().copy(102, 1);
 		Loan loan3 = new Loan(3, 102, 1, "2017-10-12", "2017-10-22", "2017-10-22");
 		db.add().loan(loan2);
@@ -33,7 +34,7 @@ public class TestDatabast {
 		db.add().author(2, "Andreas Möller");
 		db.add().bookAuthors(1, authors);
 		db.add().copy(101, 1);
-		db.add().loan(loan);
+		db.add().loan(loan);*/
 		ArrayList<Person> persons = db.select().selectPersonsByName("em");
 		for(int i = 0; i < persons.size(); i++ ) {
 			Person temp = persons.get(i);
@@ -71,8 +72,38 @@ public class TestDatabast {
 			System.out.println("| " + temp.getId() + " | " + temp.getTitle() + " | " + temp.getDescription() + " |" + temp.getEdition() + " |" + temp.getPublished() + " |" + temp.getShelfNo() + " |");
 		}
 		
-		int tmp = db.select().selectBooksCopyOnLoan(1);
-		System.out.println(tmp);
+		System.out.println("this is for cate");
+		ArrayList<Author> AllAuthors = db.select().selectAllAuthor();
+		for(int i = 0; i < AllAuthors.size(); i++ ) {
+			Author temp = AllAuthors.get(i);
+			System.out.println("| Id | name |");
+			System.out.println("| " + temp.getId() + " | " + temp.getName() + " | ");
+		}
+		
+		System.out.println("this is for cate");
+		ArrayList<Author> authorsOnBook = db.select().selectAuthorBybook(1);
+		for(int i = 0; i < authorsOnBook.size(); i++ ) {
+			Author temp = authorsOnBook.get(i);
+			System.out.println("| Id | name |");
+			System.out.println("| " + temp.getId() + " | " + temp.getName() + " | ");
+		}
+		
+		System.out.println("this is for cate");
+		ArrayList<Author> authorsId = db.select().selectAuthorById(1);
+		for(int i = 0; i < authorsId.size(); i++ ) {
+			Author temp = authorsId.get(i);
+			System.out.println("| Id | name |");
+			System.out.println("| " + temp.getId() + " | " + temp.getName() + " | ");
+		}
+		
+		System.out.println("this is for cate");
+		ArrayList<Author> authorsname = db.select().selectAuthorByName("andre");
+		for(int i = 0; i < authorsname.size(); i++ ) {
+			Author temp = authorsname.get(i);
+			System.out.println("| Id | name |");
+			System.out.println("| " + temp.getId() + " | " + temp.getName() + " | ");
+		}
+		
 	}
 
 }

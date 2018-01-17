@@ -131,6 +131,7 @@ public class View {
 		System.out.println("1: Check author list");
 		System.out.println("2: Authors that written a book");
 		System.out.println("3: Find authors by name");
+		System.out.println("4: Find authors by Id");
 		System.out.println("B: Go to start menu");
 		System.out.println("Select option by entering the number followed by enter");
 	}
