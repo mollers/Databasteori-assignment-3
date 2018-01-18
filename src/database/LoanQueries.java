@@ -14,7 +14,11 @@ public class LoanQueries {
 	public int getMaxId() {
 		try {
 			ResultSet rs = statement.executeQuery("select max(Id) from Loan");
-			return rs.getInt(1);
+			int id = rs.getInt(1);
+		    if( rs.wasNull( ) ) {
+		    	id = 0;
+		    }
+		    return id;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

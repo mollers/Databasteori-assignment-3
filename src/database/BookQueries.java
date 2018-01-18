@@ -16,7 +16,11 @@ public class BookQueries {
 	public int getMaxId() {
 		try {
 			ResultSet rs = statement.executeQuery("select max(Id) from Book");
-			return rs.getInt(1);
+			int id = rs.getInt(1);
+		    if( rs.wasNull( ) ) {
+		    	id = 0;
+		    }
+		    return id;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -26,8 +30,12 @@ public class BookQueries {
 	}
 	public int getMaxCopyId(int bookId) {
 		try {
-			ResultSet rs = statement.executeQuery("select max(Id) from Copy where BookId = "+ bookId);
-			return rs.getInt(1);
+			ResultSet rs = statement.executeQuery("select max(Id) from Copy where BookId = "+ bookId); 
+			int id = rs.getInt(1);
+		    if( rs.wasNull( ) ) {
+		    	id = bookId;
+		    }
+		    return id;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
