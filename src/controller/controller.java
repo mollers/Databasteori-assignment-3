@@ -36,7 +36,7 @@ public class controller {
 			}
 			else if (loanInput == loanMenuOptions[2])
 			{
-				System.out.println("hihihi");
+				// go back to start menu
 			}
 		}
 		else if (input == menuOptions[1])
@@ -49,14 +49,12 @@ public class controller {
 			if (addInput == addMenuOptions[0])
 			{
 				a_view.displayCopyInputInfo();
-				int copyId = a_view.getIntInput();
 				int bookId = a_view.getIntInput();
 				lib.addBookCopy(bookId);
 			}
 			else if (addInput == addMenuOptions[1])
 			{
 				a_view.displayBookInputInfo();
-				int bookId = Integer.parseInt(a_view.getStringInput());
 				a_view.displayNext();
 				String title = a_view.getStringInput();
 				a_view.displayNext();
@@ -79,7 +77,6 @@ public class controller {
 			else if (addInput == addMenuOptions[3])
 			{
 				a_view.displayPersonInputInfo();
-				int personId = Integer.parseInt(a_view.getStringInput());
 				String zIP = a_view.getStringInput();
 				String city = a_view.getStringInput();
 				String adress = a_view.getStringInput();
@@ -105,11 +102,21 @@ public class controller {
 			}
 			else if (addInput == addMenuOptions[5])
 			{
-				
+				int bookId = Integer.parseInt(a_view.getStringInput());
+				String[] categories = {};
+				String category;
+				int counter = 0;
+				while (true)
+				{
+					category = a_view.getStringInput();
+					if (category == "end") break;
+					categories[counter++] = category;
+				}
+				lib.addCategoryToBook(bookId, categories);
 			}
 			else if (addInput == addMenuOptions[6])
 			{
-				
+				// go back to start menu
 			}
 		}
 		else if (input == menuOptions[2])
@@ -155,7 +162,7 @@ public class controller {
 			}
 			else if (addInput == findMenuOptions[3])
 			{
-				
+				// go back to start menu
 			}
 		}
 

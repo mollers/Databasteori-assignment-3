@@ -70,12 +70,12 @@ public class BookQueries {
 			}
 		}
 	}
-	public void addCategory(int book, String[] categorys) {
+	public void addCategory(int bookId, String[] categorys) {
 		for(int i = 0; i < categorys.length; i++) {
 			try {
 				statement.executeUpdate("insert into Category values("
 						+ "'" + categorys[i] + "',"
-						+ book + ")");
+						+ bookId + ")");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
