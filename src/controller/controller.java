@@ -27,11 +27,20 @@ public class controller {
 
 			if (loanInput == loanMenuOptions[0])
 			{
-				System.out.println("hi");
+				a_view.displayInputInfo(new String[] {"Copy-Id", "Person-Id", "Date Loaned", "Date Expire"});
+				int copyId = Integer.parseInt(a_view.getStringInput());
+				int personId = Integer.parseInt(a_view.getStringInput());
+				String dateLoaned = a_view.getStringInput();
+				String dateExpire = a_view.getStringInput();
+				lib.addLoan(copyId, personId, dateLoaned, dateExpire);
+				
 			}
 			else if (loanInput == loanMenuOptions[1])
 			{
-				System.out.println("hihi");
+				a_view.displayInputInfo(new String[] {"Copy-Id", "Date Returned"});
+				int copyId = Integer.parseInt(a_view.getStringInput());
+				String dateReturned = a_view.getStringInput();
+				lib.returnBook(copyId, dateReturned);
 			}
 			else if (loanInput == loanMenuOptions[2])
 			{
