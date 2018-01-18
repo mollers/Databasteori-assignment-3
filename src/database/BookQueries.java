@@ -43,6 +43,14 @@ public class BookQueries {
 		return 0;
 		
 	}
+	public void removeCopy(int Id) {
+		try {
+			statement.executeUpdate("delete from Copy where Id = "+ Id );
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public void add(Book book) {
 		try {
 			statement.executeUpdate("insert into Book values("
