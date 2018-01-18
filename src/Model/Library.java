@@ -13,8 +13,10 @@ public class Library {
 		this.db = sql;
 	}
 
-	public void addAuthor(int id, String name)
+	public void addAuthor( String name)
 	{
+		int id = 0;
+		Author author = new Author(id, name);
 		db.author().add(id, name);
 	}
 	public void addBook(int id,String title,  String description, String edition, String published,  int shelf) {
