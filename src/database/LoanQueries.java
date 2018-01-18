@@ -68,9 +68,9 @@ public class LoanQueries {
 				int CopyId = loans.getInt("CopyId");
 				int PersonId = loans.getInt("PersonId");
 				String dateLoaned = loans.getString("dateLoaned");
-				String dataExpire = loans.getString("dataExpire");
+				String dateExpire = loans.getString("dateExpire");
 				String dateReturned = loans.getString("dateReturned");
-				Loan loann = new Loan(id, CopyId, PersonId, dateLoaned, dataExpire, dateReturned);
+				Loan loann = new Loan(id, CopyId, PersonId, dateLoaned, dateExpire, dateReturned);
 				loan.add(loann);
 			}
 		} catch (SQLException e) {
