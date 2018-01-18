@@ -49,15 +49,12 @@ public class controller {
 			if (addInput == addMenuOptions[0])
 			{
 				a_view.displayInputInfo(new String [] {"Book-id", "Author-id"});
-				int copyId = a_view.getIntInput();
-
 				int bookId = a_view.getIntInput();
 				lib.addBookCopy(bookId);
 			}
 			else if (addInput == addMenuOptions[1])
 			{
 				a_view.displayInputInfo(new String[] {"Title", "Description","Edition", "Published", "Shelf" });
-				int bookId = Integer.parseInt(a_view.getStringInput());
 				a_view.displayNext();
 				String title = a_view.getStringInput();
 				a_view.displayNext();
@@ -80,7 +77,6 @@ public class controller {
 			else if (addInput == addMenuOptions[3])
 			{
 				a_view.displayInputInfo(new String[] {"ZIP", "City", "Adress", "Name", "Email", "PhoneNr"});
-				int personId = Integer.parseInt(a_view.getStringInput());
 				String zIP = a_view.getStringInput();
 				String city = a_view.getStringInput();
 				String adress = a_view.getStringInput();
