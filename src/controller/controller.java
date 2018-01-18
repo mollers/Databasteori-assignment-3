@@ -124,13 +124,14 @@ public class controller {
 			if (addInput == removeMenuOptions[0])
 			{
 				a_view.displayInputInfo(new String[] {"Book copy Id"});
-				int copyId = a_view.getInput();
+				int copyId = Integer.parseInt(a_view.getStringInput());
+				System.out.println(copyId);
 				sql.book().removeCopy(copyId);
 			}
 			else if (addInput == removeMenuOptions[1])
 			{
 				a_view.displayInputInfo(new String[] {"Person Id"});
-				int personId = a_view.getInput();
+				int personId = Integer.parseInt(a_view.getStringInput());
 				sql.person().remove(personId);
 			}
 			else if (addInput == removeMenuOptions[2])
