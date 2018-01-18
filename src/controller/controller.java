@@ -2,6 +2,8 @@ package controller;
 
 import java.util.ArrayList;
 
+import Model.Book;
+import Model.Copy;
 import Model.Library;
 import View.View;
 import database.SQLite;
@@ -92,7 +94,7 @@ public class controller {
 			}
 			else if (addInput == addMenuOptions[5])
 			{
-				a_view.displayInputInfo(new String[] {"Book-Id" , "Author-ids (Multple lines, end with typing \"end\""});
+				a_view.displayInputInfo(new String[] {"Book-Id" , "Categories (Multple lines, end with typing \"end\""});
 				int bookId = Integer.parseInt(a_view.getStringInput());
 				ArrayList<String> categories = new ArrayList<String>();
 				String category;
@@ -146,6 +148,64 @@ public class controller {
 			else if (addInput == findMenuOptions[1])
 			{
 				a_view.displayFindBookMenu();
+				input = a_view.getInput();
+				char[] findBookMenuOption = a_view.getFindBookMenuOptions();
+				ArrayList<Book> bookList;
+				
+				if (input == findBookMenuOption[0])
+				{
+					// get all books!
+					bookList = sql.book().getAll();
+					for (int i = 0; i < bookList.size(); i++)
+					{
+						System.out.println(bookList.get(i).getTitle());
+					}
+				}
+				else if (input == findBookMenuOption[1])
+				{
+					// find book by title
+					String title = a_view.getStringInput();
+					bookList = sql.book().getByTitle(title);
+					for (int i = 0; i < bookList.size(); i++)
+					{
+						System.out.println("Description: " + bookList.get(i).getDescription() + "\nEdition: " + bookList.get(i).getEdition()
+								+ "\nPublished: " + bookList.get(i).getPublished() + "\nShelf number: " + bookList.get(i).getShelfNo());
+					}
+				}
+				else if (input == findBookMenuOption[2])
+				{
+					// find book by category
+					String category = a_view.getStringInput();
+					bookList = sql.book().getByCatagory(category);
+					for (int i = 0; i < bookList.size(); i++)
+					{
+						System.out.println(bookList.get(i).getTitle());
+					}
+				}
+				else if (input == findBookMenuOption[3])
+				{
+					// find book by id
+					int bookId = Integer.parseInt(a_view.getStringInput());
+					Book b = sql.book().getById(bookId);
+					System.out.println(b.getTitle());
+				}
+				else if (input == findBookMenuOption[4])
+				{
+					// check if there are book copies available
+					a_view.displayInputInfo(new String[] {"Book id"});
+					int bookId = Integer.parseInt(a_view.getStringInput());
+					ArrayList<Copy> copies = sql.book().getCopys(bookId);
+					int availableCopies = 0;
+					for (int i = 0; i < copies.size(); i++)
+					{
+						if (copies.get(i).getAvailable() == 1) availableCopies++;
+					}
+					System.out.println(availableCopies);
+				}
+				else if (input == findBookMenuOption[5])
+				{
+					// back
+				}
 			}
 			else if (addInput == findMenuOptions[2])
 			{
