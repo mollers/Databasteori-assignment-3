@@ -66,11 +66,11 @@ public class BookQueries {
 			e.printStackTrace();
 		}
 	}
-	public void addAuthors(int bookId, int[] authorsIds) {
-		for(int i = 0; i < authorsIds.length; i++) {
+	public void addAuthors(int bookId, ArrayList<Integer> authorsIds) {
+		for(int i = 0; i < authorsIds.size(); i++) {
 			try {
 				statement.executeUpdate("insert into BookAuthors values("
-						+ authorsIds[i] + ","
+						+ authorsIds.get(i) + ","
 						+ bookId + ")");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -78,11 +78,11 @@ public class BookQueries {
 			}
 		}
 	}
-	public void addCategory(int bookId, String[] categorys) {
-		for(int i = 0; i < categorys.length; i++) {
+	public void addCategory(int bookId, ArrayList<String> categorys) {
+		for(int i = 0; i < categorys.size(); i++) {
 			try {
 				statement.executeUpdate("insert into Category values("
-						+ "'" + categorys[i] + "',"
+						+ "'" + categorys.get(i) + "',"
 						+ bookId + ")");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import Model.Library;
 import View.View;
 import database.SQLite;
@@ -85,28 +87,26 @@ public class controller {
 			{
 				a_view.displayInputInfo(new String[] {"Book-id" , "Author-ids (You can put in multiple names, enter one name then enter)"});
 				int bookId = Integer.parseInt(a_view.getStringInput());
-				int[] authorsIds = {};
+				ArrayList<Integer> authorsIds = new ArrayList<Integer>();
 				String authorId;
-				int counter = 0;
 				while (true)
 				{
 					authorId = a_view.getStringInput();
-					if (authorId == "end") break;
-					authorsIds[counter++] = Integer.parseInt(authorId);
+					if (authorId.compareTo("end") == 0) break;
+					authorsIds.add(Integer.parseInt(authorId));
 				}
 				lib.addAuthorToBook(bookId, authorsIds);
 			}
 			else if (addInput == addMenuOptions[5])
 			{
 				int bookId = Integer.parseInt(a_view.getStringInput());
-				String[] categories = {};
+				ArrayList<String> categories = new ArrayList<String>();
 				String category;
-				int counter = 0;
 				while (true)
 				{
 					category = a_view.getStringInput();
-					if (category == "end") break;
-					categories[counter++] = category;
+					if (category.compareTo("end") == 0) break;
+					else categories.add(category);
 				}
 				lib.addCategoryToBook(bookId, categories);
 			}

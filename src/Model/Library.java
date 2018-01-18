@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 import database.SQLite;
 
 public class Library {
@@ -40,11 +42,11 @@ public class Library {
 		this.loan = new Loan(id, copyId, personId, dateLoaned, dataExpire, dateReturned);
 		db.loan().add(loan);
 	}
-	public void addCategoryToBook(int bookId, String[] categories) 
+	public void addCategoryToBook(int bookId, ArrayList<String> categories) 
 	{
 		db.book().addCategory(bookId, categories);
 	}
-	public void addAuthorToBook(int bookId, int[] authorsIds)
+	public void addAuthorToBook(int bookId, ArrayList<Integer> authorsIds)
 	{
 		db.book().addAuthors(bookId, authorsIds);
 	}
