@@ -55,7 +55,7 @@ public class View {
 	
 	public char[] getRemoveMenuOptions()
 	{
-		return new char[] {'1', '2', '3', 'B'};
+		return new char[] {'1', '2', 'B'};
 	}
 	
 	public char[] getFindMenuOptions()
