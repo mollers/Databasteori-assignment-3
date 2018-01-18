@@ -79,7 +79,7 @@ public class CreateDatabase {
 					+ "PersonId integer not null,"
 					+ "DateLoaned Date not null,"
 					+ "DateExpire Date not null,"
-					+ "DataReturned Date,"
+					+ "DateReturned Date,"
 					+ "primary key(Id),"
 					+ "foreign key(CopyId) references Copy(Id),"
 					+ "foreign key(PersonId) references Person(Id))");
