@@ -218,6 +218,7 @@ public class controller {
 				}
 				else if (input == findBookMenuOption[1])
 				{
+					a_view.displayInputInfo(new String[] {"Book title"});
 					// find book by title
 					a_view.spacing();
 					String title = a_view.getStringInput();
@@ -231,15 +232,14 @@ public class controller {
 				{
 					// find book by category
 					a_view.spacing();
+					a_view.displayInputInfo(new String[] {"Category String"});
 					String category = a_view.getStringInput();
 					bookList = sql.book().getByCatagory(category);
-					for (int i = 0; i < bookList.size(); i++)
-					{
-						System.out.println(bookList.get(i).getTitle());
-					}
+					a_view.displayBookList(bookList);
 				}
 				else if (input == findBookMenuOption[3])
 				{
+					a_view.displayInputInfo(new String[] {"Book Id"});
 					// find book by id
 					a_view.spacing();
 					int bookId = Integer.parseInt(a_view.getStringInput());
@@ -253,12 +253,7 @@ public class controller {
 					a_view.displayInputInfo(new String[] {"Book id"});
 					int bookId = Integer.parseInt(a_view.getStringInput());
 					ArrayList<Copy> copies = sql.book().getCopys(bookId);
-					int availableCopies = 0;
-					for (int i = 0; i < copies.size(); i++)
-					{
-						if (copies.get(i).getAvailable() == 1) availableCopies++;
-					}
-					System.out.println(availableCopies);
+					a_view.displayCopyList(copies);
 				}
 				else if (input == findBookMenuOption[5])
 				{
@@ -300,6 +295,7 @@ public class controller {
 				else if (addInput == findPersonOptions[4]) {
 					a_view.spacing();
 					a_view.displayInputInfo(new String[] {"Name"});
+					a_view.displayInputInfo(new String[] {"Id"});
 					int id = Integer.parseInt(a_view.getStringInput());
 					a_view.displayLoanList(sql.loan().getLoans(id));
 				}
