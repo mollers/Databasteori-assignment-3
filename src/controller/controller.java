@@ -130,10 +130,6 @@ public class controller {
 			{
 				
 			}
-			else if (addInput == removeMenuOptions[3])
-			{
-				
-			}
 		}
 		else if (input == menuOptions[3])
 		{
