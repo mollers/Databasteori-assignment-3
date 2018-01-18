@@ -75,10 +75,6 @@ public class View {
 	{
 		return new char[] {'1', '2', '3', 'B'};
 	}
-	public void displayNext()
-	{
-		System.out.println("Please enter next input.");
-	}
 /*	public void displayBookInputInfo()
 	{
 		System.out.println("Please enter info in following order: id, title, description, edition, published, shelf");
