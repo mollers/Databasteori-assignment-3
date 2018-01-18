@@ -7,15 +7,8 @@ import View.View;
 import database.SQLite;
 
 public class controller {
-	private Library lib;
-	private View a_view;
-	private SQLite sql;
-
 	public boolean runLibrarySystem(Library lib, SQLite sql, View a_view)
 	{
-		this.lib = lib;
-		this.sql = sql;
-		this.a_view = a_view;
 		a_view.DisplayWelcomeMessage();
 
 		char[] menuOptions = a_view.getStartMenuOptions();
