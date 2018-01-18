@@ -127,6 +127,7 @@ public class controller {
 			
 			if (addInput == removeMenuOptions[0])
 			{
+				a_view.displayInputInfo(new String[] {"Book copy Id"});
 				
 			}
 			else if (addInput == removeMenuOptions[1])
