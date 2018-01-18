@@ -239,7 +239,7 @@ public class controller {
 			else if (addInput == findMenuOptions[2])
 			{
 				a_view.displayFindPersonMenu();
-				char[] findPersonOptions = a_view.getFindAuthorMenuOptions();
+				char[] findPersonOptions = a_view.getFindPersonMenuOptions();
 				addInput = a_view.getInput();
 				if (addInput == findPersonOptions[0]) {
 					a_view.displayPersonList(sql.person().getAll());
