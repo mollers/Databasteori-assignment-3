@@ -20,7 +20,7 @@ public class controller {
 
 		if (input == menuOptions[0])
 		{
-			a_view.clearTerminal();
+			a_view.spacing();
 			a_view.displayLoanMenu();
 			char[] loanMenuOptions = a_view.getLoanMenyOptions();
 			int loanInput = a_view.getInput();
@@ -40,7 +40,7 @@ public class controller {
 		}
 		else if (input == menuOptions[1])
 		{
-			a_view.clearTerminal();
+			a_view.spacing();
 			a_view.displayAddMenu();
 			char[] addMenuOptions = a_view.getAddMenuOptions();
 			int addInput = a_view.getInput();
@@ -61,7 +61,7 @@ public class controller {
 				int shelf = Integer.parseInt(a_view.getStringInput());
 
 				lib.addBook(title, description, edition, published, shelf);
-				a_view.clearTerminal();
+				a_view.spacing();
 			}
 			else if (addInput == addMenuOptions[2])
 			{
@@ -185,10 +185,7 @@ public class controller {
 				{
 					// get all books!
 					bookList = sql.book().getAll();
-					for (int i = 0; i < bookList.size(); i++)
-					{
-						a_view.displayBookList(bookList);
-					}
+					a_view.displayBookList(bookList);
 				}
 				else if (input == findBookMenuOption[1])
 				{
