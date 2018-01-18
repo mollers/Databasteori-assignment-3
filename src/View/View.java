@@ -113,6 +113,7 @@ public class View {
 				info += inputs[i] +", ";
 			}
 		}
+		System.out.println(info);
 	}
 	public void clearTerminal()
 	{

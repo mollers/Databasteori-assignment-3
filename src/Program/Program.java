@@ -1,4 +1,4 @@
-package Library.program;
+package Program;
 
 import Model.Library;
 import View.View;
