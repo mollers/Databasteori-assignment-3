@@ -198,6 +198,7 @@ public class controller {
 				}
 				else if (input == findBookMenuOption[1])
 				{
+					a_view.displayInputInfo(new String[] {"Book title"});
 					// find book by title
 					String title = a_view.getStringInput();
 					bookList = sql.book().getByTitle(title);
@@ -209,15 +210,14 @@ public class controller {
 				else if (input == findBookMenuOption[2])
 				{
 					// find book by category
+					a_view.displayInputInfo(new String[] {"Category String"});
 					String category = a_view.getStringInput();
 					bookList = sql.book().getByCatagory(category);
-					for (int i = 0; i < bookList.size(); i++)
-					{
-						System.out.println(bookList.get(i).getTitle());
-					}
+					a_view.displayBookList(bookList);
 				}
 				else if (input == findBookMenuOption[3])
 				{
+					a_view.displayInputInfo(new String[] {"Book Id"});
 					// find book by id
 					int bookId = Integer.parseInt(a_view.getStringInput());
 					Book b = sql.book().getById(bookId);

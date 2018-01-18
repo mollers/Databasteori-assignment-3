@@ -189,7 +189,7 @@ public class View {
 		TableList tableList = new TableList(6, "ID", "TITLE", "DESCRIPTION", "EDITION", "PUBLISHED", "SHELF NUMBER").sortBy(0).withUnicode(true);
 		for(int i = 0; i < books.size(); i++) {
 			Book current = books.get(i);
-			tableList.addRow(String.valueOf(current.getId()), current.getTitle(), current.getDescription(), current.getEdition(), current.getPublished(), String.valueOf(current.getShelfNo()));
+			tableList.addRow(String.valueOf(current.getId()), current.getTitle(), current.getDescription(), current.getPublished(), current.getEdition(), String.valueOf(current.getShelfNo()));
 		}
 		tableList.print();
 	}
@@ -210,6 +210,19 @@ public class View {
 		tableList.print();
 	}
 	public void displayCopyList(ArrayList<Copy> copies) {
+		TableList tableList = new TableList(3, "ID", "BOOK ID", "AVAILABLE").sortBy(0).withUnicode(true);
+		for(int i = 0; i < copies.size(); i++) {
+			Copy current = copies.get(i);
+			if(current.getAvailable() == 1) {
+				tableList.addRow(String.valueOf(current.getId()), String.valueOf(current.getBookId()), "True");
+			} else {
+				tableList.addRow(String.valueOf(current.getId()), String.valueOf(current.getBookId()), "False");
+			}
+			
+		}
+		tableList.print();
+	}
+	public void displayCategoryList(ArrayList<Copy> copies) {
 		TableList tableList = new TableList(3, "ID", "BOOK ID", "AVAILABLE").sortBy(0).withUnicode(true);
 		for(int i = 0; i < copies.size(); i++) {
 			Copy current = copies.get(i);
