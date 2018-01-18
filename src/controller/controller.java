@@ -48,8 +48,8 @@ public class controller {
 			
 			if (addInput == addMenuOptions[0])
 			{
-				a_view.displayInputInfo(new String [] {"Book-id", "Author-id"});
-				int bookId = a_view.getIntInput();
+				a_view.displayInputInfo(new String [] {"Book-id"});
+				int bookId = Integer.parseInt(a_view.getStringInput());
 				lib.addBookCopy(bookId);
 			}
 			else if (addInput == addMenuOptions[1])
@@ -66,6 +66,7 @@ public class controller {
 			}
 			else if (addInput == addMenuOptions[2])
 			{
+				a_view.displayInputInfo(new String [] {"Name"});
 				String name = a_view.getStringInput();
 				lib.addAuthor(name);
 			}
