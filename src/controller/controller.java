@@ -115,6 +115,7 @@ public class controller {
 		}
 		else if (input == menuOptions[2])
 		{
+			a_view.spacing();
 			a_view.displayRemoveMenu();
 			char[] removeMenuOptions = a_view.getRemoveMenuOptions();
 			int addInput = a_view.getInput();
@@ -139,6 +140,7 @@ public class controller {
 		}
 		else if (input == menuOptions[3])
 		{
+			a_view.spacing();
 			a_view.displayFindMenu();
 			char[] findMenuOptions = a_view.getFindMenuOptions();
 			int addInput = a_view.getInput();
