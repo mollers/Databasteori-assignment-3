@@ -85,19 +85,30 @@ public class View {
 	}
 	public void displayPersonInputInfo()
 	{
-		
+		System.out.println("Please enter info in following order: id, zip, city, adress, name, email, phoneNr");
 	}
 	public void displayAuthorInputInfo()
 	{
-		
+		System.out.println("Please enter info in following order: id, name");
 	}
 	public void displayLoanInputInfo()
 	{
-		
+		System.out.println("Please enter info in following order: id, copyId, personId, dateLoaned, dateExpire, dateReturned");
 	}
 	public void displayCopyInputInfo()
 	{
-		
+		System.out.println("Please enter info in following order: book-id, category");
+	}
+	public void displayBookAuthorInfo()
+	{
+		System.out.println("Please enter info in following order: book-id, author-id");
+	}
+	public void clearTerminal()
+	{
+		for (int i = 0; i < 150; i++)
+		{
+			System.out.println("");
+		}
 	}
 	public void DisplayStartMenu()
 	{

@@ -21,6 +21,7 @@ public class controller {
 
 		if (input == menuOptions[0])
 		{
+			a_view.clearTerminal();
 			a_view.DisplayLoanMenu();
 			char[] loanMenuOptions = a_view.getLoanMenyOptions();
 			int loanInput = a_view.getInput();
@@ -40,12 +41,14 @@ public class controller {
 		}
 		else if (input == menuOptions[1])
 		{
+			a_view.clearTerminal();
 			a_view.DisplayAddMenu();
 			char[] addMenuOptions = a_view.getAddMenuOptions();
 			int addInput = a_view.getInput();
 			
 			if (addInput == addMenuOptions[0])
 			{
+				a_view.displayCopyInputInfo();
 				int copyId = a_view.getIntInput();
 				int bookId = a_view.getIntInput();
 				lib.addBookCopy(copyId, bookId);
@@ -53,7 +56,7 @@ public class controller {
 			else if (addInput == addMenuOptions[1])
 			{
 				a_view.displayBookInputInfo();
-				int id = Integer.parseInt(a_view.getStringInput());
+				int bookId = Integer.parseInt(a_view.getStringInput());
 				a_view.displayNext();
 				String title = a_view.getStringInput();
 				a_view.displayNext();
@@ -65,28 +68,42 @@ public class controller {
 				a_view.displayNext();
 				int shelf = Integer.parseInt(a_view.getStringInput());
 
-				lib.addBook(id, title, description, edition, published, shelf);
+				lib.addBook(bookId, title, description, edition, published, shelf);
+				a_view.clearTerminal();
 			}
 			else if (addInput == addMenuOptions[2])
 			{
-				int id = a_view.getIntInput();
+				a_view.displayAuthorInputInfo();
+				int authorId = a_view.getIntInput();
 				String name = a_view.getStringInput();
-				lib.addAuthor(id, name);
+				lib.addAuthor(authorId, name);
 			}
 			else if (addInput == addMenuOptions[3])
 			{
-				int id = a_view.getIntInput();
+				a_view.displayPersonInputInfo();
+				int personId = Integer.parseInt(a_view.getStringInput());
 				String zIP = a_view.getStringInput();
 				String city = a_view.getStringInput();
 				String adress = a_view.getStringInput();
 				String name = a_view.getStringInput();
 				String mail = a_view.getStringInput();
 				String phoneNr = a_view.getStringInput();
-				lib.addPerson(id, zIP, city, adress, name, mail, phoneNr);
+				lib.addPerson(personId, zIP, city, adress, name, mail, phoneNr);
 			}
 			else if (addInput == addMenuOptions[4])
 			{
-				
+				a_view.displayBookAuthorInfo();
+				int bookId = Integer.parseInt(a_view.getStringInput());
+				int[] authorsIds = {};
+				String authorId;
+				int counter = 0;
+				while (true)
+				{
+					authorId = a_view.getStringInput();
+					if (authorId == "end") break;
+					authorsIds[counter++] = Integer.parseInt(authorId);
+				}
+				lib.addAuthorToBook(bookId, authorsIds);
 			}
 			else if (addInput == addMenuOptions[5])
 			{
