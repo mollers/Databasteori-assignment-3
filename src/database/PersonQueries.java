@@ -27,6 +27,14 @@ public class PersonQueries {
 		return 0;
 		
 	}
+	public void remove(int Id) {
+		try {
+			statement.executeUpdate("delete from Person where Id = "+ Id );
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public void add(Person person) {
 		try {
 			statement.executeUpdate("insert into Person"
