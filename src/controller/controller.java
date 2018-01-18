@@ -69,9 +69,8 @@ public class controller {
 			}
 			else if (addInput == addMenuOptions[2])
 			{
-				int id = a_view.getIntInput();
 				String name = a_view.getStringInput();
-				lib.addAuthor(id, name);
+				lib.addAuthor(name);
 			}
 			else if (addInput == addMenuOptions[3])
 			{

@@ -17,7 +17,7 @@ public class Library {
 	{
 		int id = 0;
 		Author author = new Author(id, name);
-		db.author().add(id, name);
+		db.author().add(author);
 	}
 	public void addBook(int id,String title,  String description, String edition, String published,  int shelf) {
 		this.book = new Book(id, title, description, edition, published, shelf);
