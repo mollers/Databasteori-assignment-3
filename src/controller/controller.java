@@ -229,12 +229,7 @@ public class controller {
 					a_view.displayInputInfo(new String[] {"Book id"});
 					int bookId = Integer.parseInt(a_view.getStringInput());
 					ArrayList<Copy> copies = sql.book().getCopys(bookId);
-					int availableCopies = 0;
-					for (int i = 0; i < copies.size(); i++)
-					{
-						if (copies.get(i).getAvailable() == 1) availableCopies++;
-					}
-					System.out.println(availableCopies);
+					a_view.displayCopyList(copies);
 				}
 				else if (input == findBookMenuOption[5])
 				{
@@ -269,7 +264,7 @@ public class controller {
 					a_view.displayPersonList(temp);
 				}
 				else if (addInput == findPersonOptions[4]) {
-					a_view.displayInputInfo(new String[] {"Name"});
+					a_view.displayInputInfo(new String[] {"Id"});
 					int id = Integer.parseInt(a_view.getStringInput());
 					a_view.displayLoanList(sql.loan().getLoans(id));
 				}
