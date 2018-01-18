@@ -12,6 +12,17 @@ public class AuthorQueries {
 	public AuthorQueries(Statement statement) {
 		this.statement = statement;
 	}
+	public int getMaxId() {
+		try {
+			ResultSet rs = statement.executeQuery("select max(Id) from Author");
+			return rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+		
+	}
 	public void add(Author author) {
 		try {
 			statement.executeUpdate("insert into Author values("
