@@ -22,7 +22,7 @@ public class controller {
 		if (input == menuOptions[0])
 		{
 			a_view.clearTerminal();
-			a_view.DisplayLoanMenu();
+			a_view.displayLoanMenu();
 			char[] loanMenuOptions = a_view.getLoanMenyOptions();
 			int loanInput = a_view.getInput();
 
@@ -42,19 +42,22 @@ public class controller {
 		else if (input == menuOptions[1])
 		{
 			a_view.clearTerminal();
-			a_view.DisplayAddMenu();
+			a_view.displayAddMenu();
 			char[] addMenuOptions = a_view.getAddMenuOptions();
 			int addInput = a_view.getInput();
 			
 			if (addInput == addMenuOptions[0])
 			{
-				a_view.displayCopyInputInfo();
+				a_view.displayInputInfo(new String [] {"Book-id", "Author-id"});
+				int copyId = a_view.getIntInput();
+
 				int bookId = a_view.getIntInput();
 				lib.addBookCopy(bookId);
 			}
 			else if (addInput == addMenuOptions[1])
 			{
-				a_view.displayBookInputInfo();
+				a_view.displayInputInfo(new String[] {"Title", "Description","Edition", "Published", "Shelf" });
+				int bookId = Integer.parseInt(a_view.getStringInput());
 				a_view.displayNext();
 				String title = a_view.getStringInput();
 				a_view.displayNext();
@@ -76,7 +79,8 @@ public class controller {
 			}
 			else if (addInput == addMenuOptions[3])
 			{
-				a_view.displayPersonInputInfo();
+				a_view.displayInputInfo(new String[] {"ZIP", "City", "Adress", "Name", "Email", "PhoneNr"});
+				int personId = Integer.parseInt(a_view.getStringInput());
 				String zIP = a_view.getStringInput();
 				String city = a_view.getStringInput();
 				String adress = a_view.getStringInput();
@@ -87,7 +91,7 @@ public class controller {
 			}
 			else if (addInput == addMenuOptions[4])
 			{
-				a_view.displayBookAuthorInfo();
+				a_view.displayInputInfo(new String[] {"Book-id" , "Author-ids (You can put in multiple names, enter one name then enter)"});
 				int bookId = Integer.parseInt(a_view.getStringInput());
 				int[] authorsIds = {};
 				String authorId;
@@ -121,7 +125,7 @@ public class controller {
 		}
 		else if (input == menuOptions[2])
 		{
-			a_view.DisplayRemoveMenu();
+			a_view.displayRemoveMenu();
 			char[] removeMenuOptions = a_view.getRemoveMenuOptions();
 			int addInput = a_view.getInput();
 			
@@ -140,21 +144,21 @@ public class controller {
 		}
 		else if (input == menuOptions[3])
 		{
-			a_view.DisplayFindMenu();
+			a_view.displayFindMenu();
 			char[] findMenuOptions = a_view.getFindMenuOptions();
 			int addInput = a_view.getInput();
 			
 			if (addInput == findMenuOptions[0])
 			{
-				a_view.DisplayFindAuthorMenu();
+				a_view.displayFindAuthorMenu();
 			}
 			else if (addInput == findMenuOptions[1])
 			{
-				a_view.DisplayFindBookMenu();
+				a_view.displayFindBookMenu();
 			}
 			else if (addInput == findMenuOptions[2])
 			{
-				a_view.DisplayFindPersonMenu();
+				a_view.displayFindPersonMenu();
 			}
 			else if (addInput == findMenuOptions[3])
 			{
