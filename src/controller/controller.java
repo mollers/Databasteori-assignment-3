@@ -55,15 +55,10 @@ public class controller {
 			else if (addInput == addMenuOptions[1])
 			{
 				a_view.displayInputInfo(new String[] {"Title", "Description","Edition", "Published", "Shelf" });
-				a_view.displayNext();
 				String title = a_view.getStringInput();
-				a_view.displayNext();
 				String description = a_view.getStringInput();
-				a_view.displayNext();
 				String edition = a_view.getStringInput();
-				a_view.displayNext();
 				String published = a_view.getStringInput();
-				a_view.displayNext();
 				int shelf = Integer.parseInt(a_view.getStringInput());
 
 				lib.addBook(title, description, edition, published, shelf);
