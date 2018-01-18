@@ -73,7 +73,7 @@ public class View {
 	}
 	public char[] getFindPersonMenuOptions()
 	{
-		return new char[] {'1', '2', '3', 'B'};
+		return new char[] {'1', '2', '3', '4', '5', 'B'};
 	}
 
 	public void displayInputInfo(String[] inputs) {
