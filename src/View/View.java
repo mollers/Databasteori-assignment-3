@@ -17,7 +17,7 @@ public class View {
 	public void DisplayWelcomeMessage()
 	{
 		System.out.println("Welcome to the library database");
-		DisplayStartMenu();
+		displayStartMenu();
 	}
 	
 	public int getInput() 
@@ -79,7 +79,7 @@ public class View {
 	{
 		System.out.println("Please enter next input.");
 	}
-	public void displayBookInputInfo()
+/*	public void displayBookInputInfo()
 	{
 		System.out.println("Please enter info in following order: id, title, description, edition, published, shelf");
 	}
@@ -102,6 +102,17 @@ public class View {
 	public void displayBookAuthorInfo()
 	{
 		System.out.println("Please enter info in following order: book-id, author-id");
+	} */
+	public void displayInputInfo(String[] inputs) {
+		String info = "Please enter info in following order: ";
+		for(int i = 0; i < inputs.length; i++) {
+			if(i == inputs.length - 1)
+			{
+				info += inputs[i] + "!";
+			} else {
+				info += inputs[i] +", ";
+			}
+		}
 	}
 	public void clearTerminal()
 	{
@@ -110,7 +121,7 @@ public class View {
 			System.out.println("");
 		}
 	}
-	public void DisplayStartMenu()
+	public void displayStartMenu()
 	{
 		System.out.println("Start Menu");
 		System.out.println("1: Loan");
@@ -121,7 +132,7 @@ public class View {
 		System.out.println("Select option by entering the number followed by enter");
 	}
 	
-	public void DisplayLoanMenu()
+	public void displayLoanMenu()
 	{
 		System.out.println("Loan Menu");
 		System.out.println("1: Loan Book");
@@ -129,7 +140,7 @@ public class View {
 		System.out.println("B: Go to start menu");
 		System.out.println("Select option by entering the number followed by enter");
 	}
-	public void DisplayAddMenu()
+	public void displayAddMenu()
 	{
 		System.out.println("Add Menu");
 		System.out.println("1: Add bookcopy");
@@ -142,7 +153,7 @@ public class View {
 		System.out.println("Select option by entering the number followed by enter");
 		
 	}
-	public void DisplayRemoveMenu()
+	public void displayRemoveMenu()
 	{
 		System.out.println("Remove Menu");
 		System.out.println("1: Remove bookcopy");
@@ -150,7 +161,7 @@ public class View {
 		System.out.println("B: Go to start menu");
 		System.out.println("Select option by entering the number followed by enter");
 	}
-	public void DisplayFindMenu()
+	public void displayFindMenu()
 	{
 		System.out.println("Find Menu");
 		System.out.println("1: Authors");
@@ -159,7 +170,7 @@ public class View {
 		System.out.println("B: Go to start menu");
 		System.out.println("Select option by entering the number followed by enter");
 	}
-	public void DisplayFindAuthorMenu()
+	public void displayFindAuthorMenu()
 	{
 		System.out.println("Find Author Menu");
 		System.out.println("1: Check author list");
@@ -169,7 +180,7 @@ public class View {
 		System.out.println("B: Go to start menu");
 		System.out.println("Select option by entering the number followed by enter");
 	}
-	public void DisplayFindBookMenu()
+	public void displayFindBookMenu()
 	{
 		System.out.println("Find Book Menu");
 		System.out.println("1: Check book list");
@@ -180,7 +191,7 @@ public class View {
 		System.out.println("B: Go to start menu");
 		System.out.println("Select option by entering the number followed by enter");
 	}
-	public void DisplayFindPersonMenu()
+	public void displayFindPersonMenu()
 	{
 		System.out.println("Find Person Menu");
 		System.out.println("1: Get all persons");
@@ -191,7 +202,7 @@ public class View {
 		System.out.println("B: Go to start menu");
 		System.out.println("Select option by entering the number followed by enter");
 	}
-	public void DisplayPersonList(ArrayList<Person> persons) {
+	public void displayPersonList(ArrayList<Person> persons) {
 		TableList tableList = new TableList(7, "ID", "NAME", "MAIL", "PHONE", "ADRESS", "CITY", "ZIP").sortBy(0).withUnicode(true);
 		for(int i = 0; i < persons.size(); i++) {
 			Person current = persons.get(i);
@@ -199,7 +210,7 @@ public class View {
 		}
 		tableList.print();
 	}
-	public void DisplayBookList(ArrayList<Book> books) {
+	public void displayBookList(ArrayList<Book> books) {
 		TableList tableList = new TableList(6, "ID", "TITLE", "DESCRIPTION", "EDITION", "PUBLISHED", "SHELF NUMBER").sortBy(0).withUnicode(true);
 		for(int i = 0; i < books.size(); i++) {
 			Book current = books.get(i);
@@ -207,7 +218,7 @@ public class View {
 		}
 		tableList.print();
 	}
-	public void DisplayLoanList(ArrayList<Loan> loans) {
+	public void displayLoanList(ArrayList<Loan> loans) {
 		TableList tableList = new TableList(6, "ID", "CopyId", "PersonId", "Data Loaned", "Date Loan Expire", "Date Returned").sortBy(0).withUnicode(true);
 		for(int i = 0; i < loans.size(); i++) {
 			Loan current = loans.get(i);
@@ -215,7 +226,7 @@ public class View {
 		}
 		tableList.print();
 	}
-	public void DisplayAuthorList(ArrayList<Author> authors) {
+	public void displayAuthorList(ArrayList<Author> authors) {
 		TableList tableList = new TableList(2, "ID", "NAME").sortBy(0).withUnicode(true);
 		for(int i = 0; i < authors.size(); i++) {
 			Author current = authors.get(i);
