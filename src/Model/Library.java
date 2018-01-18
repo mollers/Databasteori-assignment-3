@@ -32,12 +32,14 @@ public class Library {
 		int copyId = db.book().getMaxCopyId(bookId) + 1;
 		db.book().addCopy(copyId, bookId);
 	}
-	public void addPerson( String zIP, String city, String adress, String name, String mail, String phoneNr) {
+	public void addPerson( String zIP, String city, String adress, String name, String mail, String phoneNr) 
+	{
 		int id = db.person().getMaxId() + 1;
 		this.person = new Person(id, zIP, city, adress, name, mail, phoneNr);
 		db.person().add(person);
 	}
-	public void addLoan( int copyId, int personId, String dateLoaned, String dataExpire, String dateReturned) {
+	public void addLoan( int copyId, int personId, String dateLoaned, String dataExpire, String dateReturned) 
+	{
 		int id = db.loan().getMaxId() + 1;
 		this.loan = new Loan(id, copyId, personId, dateLoaned, dataExpire, dateReturned);
 		db.loan().add(loan);
@@ -55,7 +57,8 @@ public class Library {
 		this.loan = new Loan(id, copyId, personId, dateLoaned, dateExpire,"");
 		db.loan().add(loan);
 	}
-	public void returnBook(int copyId, String dateReturned) {
+	public void returnBook(int copyId, String dateReturned) 
+	{
 		db.loan().returnBook(copyId, dateReturned);
 	}
 }

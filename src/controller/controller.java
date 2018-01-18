@@ -13,6 +13,7 @@ import database.SQLite;
 public class controller {
 	public boolean runLibrarySystem(Library lib, SQLite sql, View a_view)
 	{
+		a_view.spacing();
 		a_view.DisplayWelcomeMessage();
 
 		char[] menuOptions = a_view.getStartMenuOptions();
@@ -27,6 +28,7 @@ public class controller {
 
 			if (loanInput == loanMenuOptions[0])
 			{
+				a_view.spacing();
 				a_view.displayInputInfo(new String[] {"Copy-Id", "Person-Id", "Date Loaned", "Date Expire"});
 				int copyId = Integer.parseInt(a_view.getStringInput());
 				int personId = Integer.parseInt(a_view.getStringInput());
@@ -37,6 +39,7 @@ public class controller {
 			}
 			else if (loanInput == loanMenuOptions[1])
 			{
+				a_view.spacing();
 				a_view.displayInputInfo(new String[] {"Copy-Id", "Date Returned"});
 				int copyId = Integer.parseInt(a_view.getStringInput());
 				String dateReturned = a_view.getStringInput();
@@ -56,12 +59,14 @@ public class controller {
 			
 			if (addInput == addMenuOptions[0])
 			{
+				a_view.spacing();
 				a_view.displayInputInfo(new String [] {"Book-id"});
 				int bookId = Integer.parseInt(a_view.getStringInput());
 				lib.addBookCopy(bookId);
 			}
 			else if (addInput == addMenuOptions[1])
 			{
+				a_view.spacing();
 				a_view.displayInputInfo(new String[] {"Title", "Description","Edition", "Published", "Shelf" });
 				String title = a_view.getStringInput();
 				String description = a_view.getStringInput();
@@ -74,12 +79,14 @@ public class controller {
 			}
 			else if (addInput == addMenuOptions[2])
 			{
+				a_view.spacing();
 				a_view.displayInputInfo(new String [] {"Name"});
 				String name = a_view.getStringInput();
 				lib.addAuthor(name);
 			}
 			else if (addInput == addMenuOptions[3])
 			{
+				a_view.spacing();
 				a_view.displayInputInfo(new String[] {"ZIP", "City", "Adress", "Name", "Email", "PhoneNr"});
 				String zIP = a_view.getStringInput();
 				String city = a_view.getStringInput();
@@ -91,6 +98,7 @@ public class controller {
 			}
 			else if (addInput == addMenuOptions[4])
 			{
+				a_view.spacing();
 				a_view.displayInputInfo(new String[] {"Book-id" , "Author-ids (You can put in multiple names, enter one name then enter)"});
 				int bookId = Integer.parseInt(a_view.getStringInput());
 				ArrayList<Integer> authorsIds = new ArrayList<Integer>();
@@ -105,6 +113,7 @@ public class controller {
 			}
 			else if (addInput == addMenuOptions[5])
 			{
+				a_view.spacing();
 				a_view.displayInputInfo(new String[] {"Book-Id" , "Categories (Multple lines, end with typing \"end\""});
 				int bookId = Integer.parseInt(a_view.getStringInput());
 				ArrayList<String> categories = new ArrayList<String>();
@@ -131,6 +140,7 @@ public class controller {
 			
 			if (addInput == removeMenuOptions[0])
 			{
+				a_view.spacing();
 				a_view.displayInputInfo(new String[] {"Book copy Id"});
 				int copyId = Integer.parseInt(a_view.getStringInput());
 				System.out.println(copyId);
@@ -138,6 +148,7 @@ public class controller {
 			}
 			else if (addInput == removeMenuOptions[1])
 			{
+				a_view.spacing();
 				a_view.displayInputInfo(new String[] {"Person Id"});
 				int personId = Integer.parseInt(a_view.getStringInput());
 				sql.person().remove(personId);
@@ -156,24 +167,29 @@ public class controller {
 			
 			if (addInput == findMenuOptions[0])
 			{
+				a_view.spacing();
 				a_view.displayFindAuthorMenu();
 				char[] findAuthorOptions = a_view.getFindAuthorMenuOptions();
 				addInput = a_view.getInput();
 				if (addInput == findAuthorOptions[0]) {
+					a_view.spacing();
 					a_view.displayAuthorList(sql.author().getAll());
 				}
 				else if(addInput == findAuthorOptions[1]) {
+					a_view.spacing();
 					a_view.displayInputInfo(new String[] {"Book Id"});
 					int id = Integer.parseInt(a_view.getStringInput());
 					a_view.displayAuthorList(sql.author().getByBook(id));
 				}
 				else if(addInput == findAuthorOptions[2]) {
+					a_view.spacing();
 					a_view.displayInputInfo(new String[] {"Authors name"});
 					String name = a_view.getStringInput();
 					a_view.displayAuthorList(sql.author().getByName(name));
 					
 				}
 				else if(addInput == findAuthorOptions[3]) {
+					a_view.spacing();
 					a_view.displayInputInfo(new String[] {"Authors id"});
 					int id = Integer.parseInt(a_view.getStringInput());
 					ArrayList<Author> temp = new ArrayList<Author>();
@@ -181,12 +197,13 @@ public class controller {
 					a_view.displayAuthorList(temp);
 				}
 				else if(addInput == findAuthorOptions[4]) {
-					
+					// back
 				}
 				
 			}
 			else if (addInput == findMenuOptions[1])
 			{
+				a_view.spacing();
 				a_view.displayFindBookMenu();
 				input = a_view.getInput();
 				char[] findBookMenuOption = a_view.getFindBookMenuOptions();
@@ -195,12 +212,14 @@ public class controller {
 				if (input == findBookMenuOption[0])
 				{
 					// get all books!
+					a_view.spacing();
 					bookList = sql.book().getAll();
 					a_view.displayBookList(bookList);
 				}
 				else if (input == findBookMenuOption[1])
 				{
 					// find book by title
+					a_view.spacing();
 					String title = a_view.getStringInput();
 					bookList = sql.book().getByTitle(title);
 					for (int i = 0; i < bookList.size(); i++)
@@ -211,6 +230,7 @@ public class controller {
 				else if (input == findBookMenuOption[2])
 				{
 					// find book by category
+					a_view.spacing();
 					String category = a_view.getStringInput();
 					bookList = sql.book().getByCatagory(category);
 					for (int i = 0; i < bookList.size(); i++)
@@ -221,6 +241,7 @@ public class controller {
 				else if (input == findBookMenuOption[3])
 				{
 					// find book by id
+					a_view.spacing();
 					int bookId = Integer.parseInt(a_view.getStringInput());
 					Book b = sql.book().getById(bookId);
 					System.out.println(b.getTitle());
@@ -228,6 +249,7 @@ public class controller {
 				else if (input == findBookMenuOption[4])
 				{
 					// check if there are book copies available
+					a_view.spacing();
 					a_view.displayInputInfo(new String[] {"Book id"});
 					int bookId = Integer.parseInt(a_view.getStringInput());
 					ArrayList<Copy> copies = sql.book().getCopys(bookId);
@@ -245,18 +267,22 @@ public class controller {
 			}
 			else if (addInput == findMenuOptions[2])
 			{
+				a_view.spacing();
 				a_view.displayFindPersonMenu();
 				char[] findPersonOptions = a_view.getFindPersonMenuOptions();
 				addInput = a_view.getInput();
 				if (addInput == findPersonOptions[0]) {
+					a_view.spacing();
 					a_view.displayPersonList(sql.person().getAll());
 				}
 				else if (addInput == findPersonOptions[1]) {
+					a_view.spacing();
 					a_view.displayInputInfo(new String[] {"Name"});
 					String name = a_view.getStringInput();
 					a_view.displayPersonList(sql.person().getByName(name));
 				}
 				else if (addInput == findPersonOptions[2]) {
+					a_view.spacing();
 					a_view.displayInputInfo(new String[] {"persons id"});
 					int id = Integer.parseInt(a_view.getStringInput());
 					ArrayList<Person> temp = new ArrayList<Person>();
@@ -264,6 +290,7 @@ public class controller {
 					a_view.displayPersonList(temp);
 				}
 				else if (addInput == findPersonOptions[3]) {
+					a_view.spacing();
 					a_view.displayInputInfo(new String[] {"Email"});
 					String mail = a_view.getStringInput();
 					ArrayList<Person> temp = new ArrayList<Person>();
@@ -271,6 +298,7 @@ public class controller {
 					a_view.displayPersonList(temp);
 				}
 				else if (addInput == findPersonOptions[4]) {
+					a_view.spacing();
 					a_view.displayInputInfo(new String[] {"Name"});
 					int id = Integer.parseInt(a_view.getStringInput());
 					a_view.displayLoanList(sql.loan().getLoans(id));
