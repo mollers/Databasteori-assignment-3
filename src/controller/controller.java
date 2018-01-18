@@ -197,8 +197,7 @@ public class controller {
 					bookList = sql.book().getByTitle(title);
 					for (int i = 0; i < bookList.size(); i++)
 					{
-						System.out.println("Description: " + bookList.get(i).getDescription() + "\nEdition: " + bookList.get(i).getEdition()
-								+ "\nPublished: " + bookList.get(i).getPublished() + "\nShelf number: " + bookList.get(i).getShelfNo());
+						a_view.displayBookList(bookList);
 					}
 				}
 				else if (input == findBookMenuOption[2])
