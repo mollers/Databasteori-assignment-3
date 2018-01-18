@@ -13,6 +13,28 @@ public class BookQueries {
 	public BookQueries(Statement statement) {
 		this.statement = statement;
 	}
+	public int getMaxId() {
+		try {
+			ResultSet rs = statement.executeQuery("select max(Id) from Book");
+			return rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+		
+	}
+	public int getMaxCopyId(int bookId) {
+		try {
+			ResultSet rs = statement.executeQuery("select max(Id) from Copy where BookId = "+ bookId);
+			return rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+		
+	}
 	public void add(Book book) {
 		try {
 			statement.executeUpdate("insert into Book values("

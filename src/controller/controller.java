@@ -51,7 +51,7 @@ public class controller {
 				a_view.displayCopyInputInfo();
 				int copyId = a_view.getIntInput();
 				int bookId = a_view.getIntInput();
-				lib.addBookCopy(copyId, bookId);
+				lib.addBookCopy(bookId);
 			}
 			else if (addInput == addMenuOptions[1])
 			{
@@ -68,15 +68,13 @@ public class controller {
 				a_view.displayNext();
 				int shelf = Integer.parseInt(a_view.getStringInput());
 
-				lib.addBook(bookId, title, description, edition, published, shelf);
+				lib.addBook(title, description, edition, published, shelf);
 				a_view.clearTerminal();
 			}
 			else if (addInput == addMenuOptions[2])
 			{
-				a_view.displayAuthorInputInfo();
-				int authorId = a_view.getIntInput();
 				String name = a_view.getStringInput();
-				lib.addAuthor(authorId, name);
+				lib.addAuthor(name);
 			}
 			else if (addInput == addMenuOptions[3])
 			{
@@ -88,7 +86,7 @@ public class controller {
 				String name = a_view.getStringInput();
 				String mail = a_view.getStringInput();
 				String phoneNr = a_view.getStringInput();
-				lib.addPerson(personId, zIP, city, adress, name, mail, phoneNr);
+				lib.addPerson(zIP, city, adress, name, mail, phoneNr);
 			}
 			else if (addInput == addMenuOptions[4])
 			{

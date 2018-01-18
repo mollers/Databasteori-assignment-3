@@ -13,26 +13,30 @@ public class Library {
 		this.db = sql;
 	}
 
-	public void addAuthor(int id, String name)
+	public void addAuthor( String name)
 	{
-		db.author().add(id, name);
+		int id = db.author().getMaxId() + 1;
+		Author author = new Author(id, name);
+		db.author().add(author);
 	}
-	public void addBook(int id,String title,  String description, String edition, String published,  int shelf) 
-	{
+
+	public void addBook(String title,  String description, String edition, String published,  int shelf) {
+		int id = db.book().getMaxId() + 100;
 		this.book = new Book(id, title, description, edition, published, shelf);
 		db.book().add(book);
 	}
-	public void addBookCopy(int copyId, int bookId)
+	public void addBookCopy( int bookId)
 	{
+		int copyId = db.book().getMaxCopyId(bookId) + 1;
 		db.book().addCopy(copyId, bookId);
 	}
-	public void addPerson(int id, String zIP, String city, String adress, String name, String mail, String phoneNr) 
-	{
+	public void addPerson( String zIP, String city, String adress, String name, String mail, String phoneNr) {
+		int id = db.person().getMaxId() + 1;
 		this.person = new Person(id, zIP, city, adress, name, mail, phoneNr);
 		db.person().add(person);
 	}
-	public void addLoan(int id, int copyId, int personId, String dateLoaned, String dataExpire, String dateReturned) 
-	{
+	public void addLoan( int copyId, int personId, String dateLoaned, String dataExpire, String dateReturned) {
+		int id = db.loan().getMaxId() + 1;
 		this.loan = new Loan(id, copyId, personId, dateLoaned, dataExpire, dateReturned);
 		db.loan().add(loan);
 	}
