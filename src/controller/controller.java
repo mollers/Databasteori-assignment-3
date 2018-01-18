@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import Model.Book;
 import Model.Copy;
+import Model.Author;
 import Model.Library;
+import Model.Person;
 import View.View;
 import database.SQLite;
 
@@ -144,6 +146,33 @@ public class controller {
 			if (addInput == findMenuOptions[0])
 			{
 				a_view.displayFindAuthorMenu();
+				char[] findAuthorOptions = a_view.getFindAuthorMenuOptions();
+				addInput = a_view.getInput();
+				if (addInput == findAuthorOptions[0]) {
+					a_view.displayAuthorList(sql.author().getAll());
+				}
+				else if(addInput == findAuthorOptions[1]) {
+					a_view.displayInputInfo(new String[] {"Book Id"});
+					int id = Integer.parseInt(a_view.getStringInput());
+					a_view.displayAuthorList(sql.author().getByBook(id));
+				}
+				else if(addInput == findAuthorOptions[2]) {
+					a_view.displayInputInfo(new String[] {"Authors name"});
+					String name = a_view.getStringInput();
+					a_view.displayAuthorList(sql.author().getByName(name));
+					
+				}
+				else if(addInput == findAuthorOptions[3]) {
+					a_view.displayInputInfo(new String[] {"Authors id"});
+					int id = Integer.parseInt(a_view.getStringInput());
+					ArrayList<Author> temp = new ArrayList<Author>();
+					temp.add(sql.author().getById(id));
+					a_view.displayAuthorList(temp);
+				}
+				else if(addInput == findAuthorOptions[4]) {
+					
+				}
+				
 			}
 			else if (addInput == findMenuOptions[1])
 			{
@@ -210,6 +239,38 @@ public class controller {
 			else if (addInput == findMenuOptions[2])
 			{
 				a_view.displayFindPersonMenu();
+				char[] findPersonOptions = a_view.getFindAuthorMenuOptions();
+				addInput = a_view.getInput();
+				if (addInput == findPersonOptions[0]) {
+					a_view.displayPersonList(sql.person().getAll());
+				}
+				else if (addInput == findPersonOptions[1]) {
+					a_view.displayInputInfo(new String[] {"Name"});
+					String name = a_view.getStringInput();
+					a_view.displayPersonList(sql.person().getByName(name));
+				}
+				else if (addInput == findPersonOptions[2]) {
+					a_view.displayInputInfo(new String[] {"persons id"});
+					int id = Integer.parseInt(a_view.getStringInput());
+					ArrayList<Person> temp = new ArrayList<Person>();
+					temp.add(sql.person().getById(id));
+					a_view.displayPersonList(temp);
+				}
+				else if (addInput == findPersonOptions[3]) {
+					a_view.displayInputInfo(new String[] {"Email"});
+					String mail = a_view.getStringInput();
+					ArrayList<Person> temp = new ArrayList<Person>();
+					temp.add(sql.person().getByMail(mail));
+					a_view.displayPersonList(temp);
+				}
+				else if (addInput == findPersonOptions[4]) {
+					a_view.displayInputInfo(new String[] {"Name"});
+					int id = Integer.parseInt(a_view.getStringInput());
+					a_view.displayLoanList(sql.loan().getLoans(id));
+				}
+				else if (addInput == findPersonOptions[5]) {
+					
+				}
 			}
 			else if (addInput == findMenuOptions[3])
 			{

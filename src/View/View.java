@@ -65,7 +65,7 @@ public class View {
 	
 	public char[] getFindAuthorMenuOptions()
 	{
-		return new char[] {'1', '2', '3', '4', '5', '6', 'B'};
+		return new char[] {'1', '2', '3', '4', 'B'};
 	}
 	public char[] getFindBookMenuOptions()
 	{
@@ -73,32 +73,9 @@ public class View {
 	}
 	public char[] getFindPersonMenuOptions()
 	{
-		return new char[] {'1', '2', '3', 'B'};
+		return new char[] {'1', '2', '3', '4', '5', 'B'};
 	}
-/*	public void displayBookInputInfo()
-	{
-		System.out.println("Please enter info in following order: id, title, description, edition, published, shelf");
-	}
-	public void displayPersonInputInfo()
-	{
-		System.out.println("Please enter info in following order: id, zip, city, adress, name, email, phoneNr");
-	}
-	public void displayAuthorInputInfo()
-	{
-		System.out.println("Please enter info in following order: id, name");
-	}
-	public void displayLoanInputInfo()
-	{
-		System.out.println("Please enter info in following order: id, copyId, personId, dateLoaned, dateExpire, dateReturned");
-	}
-	public void displayCopyInputInfo()
-	{
-		System.out.println("Please enter info in following order: book-id, category");
-	}
-	public void displayBookAuthorInfo()
-	{
-		System.out.println("Please enter info in following order: book-id, author-id");
-	} */
+
 	public void displayInputInfo(String[] inputs) {
 		String info = "Please enter info in following order: ";
 		for(int i = 0; i < inputs.length; i++) {

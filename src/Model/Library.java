@@ -50,4 +50,12 @@ public class Library {
 	{
 		db.book().addAuthors(bookId, authorsIds);
 	}
+	public void addLoan(int copyId, int personId, String dateLoaned, String dateExpire) {
+		int id = db.loan().getMaxId() +1;
+		this.loan = new Loan(id, copyId, personId, dateLoaned, dateExpire,"");
+		db.loan().add(loan);
+	}
+	public void returnBook(int copyId, String dateReturned) {
+		db.loan().returnBook(copyId, dateReturned);
+	}
 }
