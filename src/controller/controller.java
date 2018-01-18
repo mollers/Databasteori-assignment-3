@@ -2,6 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 
+import Model.Author;
 import Model.Library;
 import View.View;
 import database.SQLite;
@@ -141,6 +142,33 @@ public class controller {
 			if (addInput == findMenuOptions[0])
 			{
 				a_view.displayFindAuthorMenu();
+				char[] findAuthorOptions = a_view.getFindAuthorMenuOptions();
+				addInput = a_view.getInput();
+				if (addInput == findAuthorOptions[0]) {
+					a_view.displayAuthorList(sql.author().getAll());
+				}
+				else if(addInput == findAuthorOptions[1]) {
+					a_view.displayInputInfo(new String[] {"Book Id"});
+					int id = Integer.parseInt(a_view.getStringInput());
+					a_view.displayAuthorList(sql.author().getByBook(id));
+				}
+				else if(addInput == findAuthorOptions[2]) {
+					a_view.displayInputInfo(new String[] {"Authors name"});
+					String name = a_view.getStringInput();
+					a_view.displayAuthorList(sql.author().getByName(name));
+					
+				}
+				else if(addInput == findAuthorOptions[3]) {
+					a_view.displayInputInfo(new String[] {"Authors id"});
+					int id = Integer.parseInt(a_view.getStringInput());
+					ArrayList<Author> temp = new ArrayList<Author>();
+					temp.add(sql.author().getById(id));
+					a_view.displayAuthorList(temp);
+				}
+				else if(addInput == findAuthorOptions[4]) {
+					
+				}
+				
 			}
 			else if (addInput == findMenuOptions[1])
 			{
