@@ -93,6 +93,7 @@ public class controller {
 			}
 			else if (addInput == addMenuOptions[5])
 			{
+				a_view.displayInputInfo(new String[] {"Book-Id" , "Author-ids (Multple lines, end with typing \"end\""});
 				int bookId = Integer.parseInt(a_view.getStringInput());
 				ArrayList<String> categories = new ArrayList<String>();
 				String category;
