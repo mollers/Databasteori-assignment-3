@@ -88,9 +88,9 @@ public class View {
 		}
 		System.out.println(info);
 	}
-	public void clearTerminal()
+	public void spacing()
 	{
-		for (int i = 0; i < 150; i++)
+		for (int i = 0; i < 3; i++)
 		{
 			System.out.println("");
 		}

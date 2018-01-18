@@ -86,11 +86,9 @@ public class LoanQueries {
 			loanId= statement.executeQuery("select Id from Loan"
 					+ " where CopyId =" + copyId
 					+" and DateReturned is '' ").getInt("Id");
-			System.out.println("LoanId: " + loanId);
 			String query = "update Loan"
 					+ " set DateReturned =  " +"'" + dateReturned +"'"
 					+" where Id = " + loanId;
-			System.out.println(query);
 			statement.executeUpdate(query);
 			statement.executeUpdate("update Copy"
 					+ " set Available = 1"
