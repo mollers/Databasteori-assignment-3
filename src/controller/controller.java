@@ -16,7 +16,10 @@ public class controller {
 
 		char[] menuOptions = a_view.getStartMenuOptions();
 		int input = a_view.getInput();
-
+		/**
+		 * Menu options to select depending on the input on which menu it should go to 
+		 * next or selection to quit the program
+		 */
 		if (input == menuOptions[0])
 		{
 			loanController.loanMenu();
