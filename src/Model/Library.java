@@ -45,14 +45,6 @@ public class Library {
 		db.person().add(person);
 	}
 	
-	// Creates a Loan object and adds the Loan to the database
-	public void addLoan( int copyId, int personId, String dateLoaned, String dataExpire, String dateReturned) 
-	{
-		int id = db.loan().getMaxId() + 1;
-		this.loan = new Loan(id, copyId, personId, dateLoaned, dataExpire, dateReturned);
-		db.loan().add(loan);
-	}
-	
 	// Adds a category to a specific Book by specifying the book-id of the Book
 	public void addCategoryToBook(int bookId, ArrayList<String> categories) 
 	{
@@ -65,11 +57,14 @@ public class Library {
 		db.book().addAuthors(bookId, authorsIds);
 	}
 
+	// Creates a Loan object and adds the Loan to the database
 	public void addLoan(int copyId, int personId, String dateLoaned, String dateExpire) {
 		int id = db.loan().getMaxId() +1;
 		this.loan = new Loan(id, copyId, personId, dateLoaned, dateExpire,"");
 		db.loan().add(loan);
 	}
+	
+	// Updates the dateReturned column of a Loan
 	public void returnBook(int copyId, String dateReturned) 
 	{
 		db.loan().returnBook(copyId, dateReturned);
