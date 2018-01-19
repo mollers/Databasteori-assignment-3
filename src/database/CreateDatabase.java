@@ -18,10 +18,12 @@ public class CreateDatabase {
 		}
 		
 	}
+	/**
+	 * Creates the tables for our database
+	 * @return
+	 */
 	public Connection createTables() {
 		try {
-			
-			
 			this.statement.setQueryTimeout(30);
 			statement.executeUpdate("drop table if exists Author");
 			System.out.println("Creating new table Author");

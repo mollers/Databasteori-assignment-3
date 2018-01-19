@@ -12,6 +12,10 @@ public class PersonQueries {
 	public PersonQueries(Statement statement) {
 		this.statement = statement;
 	}
+	/**
+	 * Returns the heighest id that a row in table person has.
+	 * @return
+	 */
 	public int getMaxId() {
 		try {
 			ResultSet rs = statement.executeQuery("select max(Id) from Person");

@@ -14,6 +14,10 @@ public class LoanQueries {
 	public LoanQueries(Statement statement) {
 		this.statement = statement;
 	}
+	/**
+	 * Returns the heighest id existing in the loan table
+	 * @return
+	 */
 	public int getMaxId() {
 		try {
 			ResultSet rs = statement.executeQuery("select max(Id) from Loan");
@@ -29,6 +33,10 @@ public class LoanQueries {
 		return 0;
 
 	}
+	/**
+	 * Inserts a loan row, and changes the copy to not available
+	 * @param loan
+	 */
 	public void add(Loan loan) {
 		try {
 			statement.executeUpdate("insert into Loan values("
@@ -46,6 +54,11 @@ public class LoanQueries {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Returns the loan corresponding to the id
+	 * @param Id
+	 * @return
+	 */
 	public ArrayList<Loan> getLoans(int Id) {
 		try {
 			ResultSet rs = this.statement.executeQuery("Select * from Loan where PersonId = "+Id );
@@ -79,6 +92,11 @@ public class LoanQueries {
 		}
 		return loan;
 	}
+	/**
+	 * Finds the loan with the copyid and where the dateReturned attribute is "" and updates that value and also updates the book copy to available
+	 * @param copyId
+	 * @param dateReturned
+	 */
 	public void returnBook(int copyId, String dateReturned) {
 		int loanId;
 		try {

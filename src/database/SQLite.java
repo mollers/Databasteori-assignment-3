@@ -14,9 +14,13 @@ public class SQLite{
 	private PersonQueries personQueries;
 	private AuthorQueries authorQueries;
 	private LoanQueries loanQueries;
+	
+	/**
+	 *  Summons all the sql queries to a central point
+	 * @param DBname
+	 */
 	public SQLite(String DBname) {
 		try {
-			
 			if(new File(DBname + ".db").exists()) {
 				this.connection = DriverManager.getConnection("jdbc:sqlite:" + DBname + ".db");
 			} else {
