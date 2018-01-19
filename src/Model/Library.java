@@ -38,15 +38,12 @@ public class Library {
 		this.person = new Person(id, zIP, city, adress, name, mail, phoneNr);
 		db.person().add(person);
 	}
-<<<<<<< HEAD
-=======
 	public void addLoan( int copyId, int personId, String dateLoaned, String dataExpire, String dateReturned) 
 	{
 		int id = db.loan().getMaxId() + 1;
 		this.loan = new Loan(id, copyId, personId, dateLoaned, dataExpire, dateReturned);
 		db.loan().add(loan);
 	}
->>>>>>> 3470e05385e9a02cade69991c48b5d7b05c2ec3c
 	public void addCategoryToBook(int bookId, ArrayList<String> categories) 
 	{
 		db.book().addCategory(bookId, categories);
