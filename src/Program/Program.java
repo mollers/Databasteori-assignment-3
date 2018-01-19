@@ -9,7 +9,7 @@ import database.SQLite;
 public class Program {
 
 	public static void main(String[] args) {
-		String database = "test";
+		String database = "library";
 		SQLite sql = new SQLite(database);
 		Library lib = new Library(sql);
 		View v = new View();

@@ -5,9 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Model.Book;
 import Model.Loan;
-import Model.Person;
 
 public class LoanQueries {
 	private Statement statement;
