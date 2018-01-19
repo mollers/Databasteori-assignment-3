@@ -12,6 +12,10 @@ public class AuthorQueries {
 	public AuthorQueries(Statement statement) {
 		this.statement = statement;
 	}
+	/**
+	 * 
+	 * @return The highest id number of all authors
+	 */
 	public int getMaxId() {
 		try {
 			ResultSet rs = statement.executeQuery("select max(Id) from Author");
@@ -24,9 +28,12 @@ public class AuthorQueries {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return 0;
-		
+		return 0;	
 	}
+	/**
+	 * Inserts a author to the author table
+	 * @param author to be added
+	 */
 	public void add(Author author) {
 		try {
 			statement.executeUpdate("insert into Author values("
@@ -37,6 +44,10 @@ public class AuthorQueries {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Read all authors and return them in a Author array list
+	 * @return
+	 */
 	public ArrayList<Author> getAll() {
 		try {
 			ResultSet books = this.statement.executeQuery("Select * from Author");
@@ -51,7 +62,11 @@ public class AuthorQueries {
 			return new ArrayList<Author>();
 		}
 	}
-	
+	/**
+	 * 
+	 * @param Id - book id
+	 * @return Authors with corresponding book id
+	 */
 	public ArrayList<Author> getByBook(int Id){
 		try {
 			ResultSet author = this.statement.executeQuery("Select * from Author where Id in(select AuthorId from BookAuthors where BookId ="+Id+")");
@@ -62,7 +77,11 @@ public class AuthorQueries {
 			return new ArrayList<Author>();
 		}
 	}
-	
+	/**
+	 *  
+	 * @param Id
+	 * @return Author corresponding to the input id
+	 */
 	public Author getById(int Id){
 		try {
 			ResultSet author = this.statement.executeQuery("Select * from Author where Id ="+ Id);
@@ -73,6 +92,11 @@ public class AuthorQueries {
 			return new Author(0, null);
 		}
 	}
+	/**
+	 *  Return the authors with names that matches with the inserted string
+	 * @param name
+	 * @return Author array list
+	 */
 	public ArrayList<Author> getByName(String name){
 		try {
 			ResultSet author = this.statement.executeQuery("Select * from Author where Name like '%"+ name +"%' ");
@@ -83,7 +107,11 @@ public class AuthorQueries {
 			return new ArrayList<Author>();
 		}
 	}
-	
+	/**
+	 * 
+	 * @param authors - resultset with authors
+	 * @return Array list with authors
+	 */
 	private ArrayList<Author> toAuthorArrayList(ResultSet authors){
 		ArrayList<Author> auth = new ArrayList<Author>();
 		try {

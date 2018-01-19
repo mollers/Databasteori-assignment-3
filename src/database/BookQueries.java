@@ -13,6 +13,10 @@ public class BookQueries {
 	public BookQueries(Statement statement) {
 		this.statement = statement;
 	}
+	/**
+	 * 
+	 * @return the highest book id.
+	 */
 	public int getMaxId() {
 		try {
 			ResultSet rs = statement.executeQuery("select max(Id) from Book");
@@ -25,9 +29,13 @@ public class BookQueries {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return 0;
-		
+		return 0;	
 	}
+	/**
+	 * 
+	 * @param bookId
+	 * @return the higest copy id of for book corresponding to input bookid
+	 */
 	public int getMaxCopyId(int bookId) {
 		try {
 			ResultSet rs = statement.executeQuery("select max(Id) from Copy where BookId = "+ bookId); 
@@ -41,8 +49,11 @@ public class BookQueries {
 			e.printStackTrace();
 		}
 		return 0;
-		
 	}
+	/**
+	 *  Removes book copy that have the inserted id
+	 * @param Id
+	 */
 	public void removeCopy(int Id) {
 		try {
 			statement.executeUpdate("delete from Copy where Id = "+ Id );
@@ -51,6 +62,10 @@ public class BookQueries {
 			e.printStackTrace();
 		}
 	}
+/**
+ *  Adds inserted book
+ * @param book
+ */
 	public void add(Book book) {
 		try {
 			statement.executeUpdate("insert into Book values("
@@ -66,6 +81,11 @@ public class BookQueries {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Adds inserted authors to specifed book
+	 * @param bookId
+	 * @param authorsIds
+	 */
 	public void addAuthors(int bookId, ArrayList<Integer> authorsIds) {
 		for(int i = 0; i < authorsIds.size(); i++) {
 			try {
@@ -78,6 +98,11 @@ public class BookQueries {
 			}
 		}
 	}
+	/**
+	 *  Adds inserted categorys to specified 
+	 * @param bookId
+	 * @param categorys
+	 */
 	public void addCategory(int bookId, ArrayList<String> categorys) {
 		for(int i = 0; i < categorys.size(); i++) {
 			try {
@@ -90,6 +115,11 @@ public class BookQueries {
 			}
 		}
 	}
+	/**
+	 * Adds a new copy to specified book
+	 * @param copyId
+	 * @param bookId
+	 */
 	public void addCopy( int copyId, int bookId) {
 		try {
 			statement.executeUpdate("insert into Copy values("
@@ -101,6 +131,10 @@ public class BookQueries {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Read all books from database and returns a book array list
+	 * @return
+	 */
 	public ArrayList<Book> getAll() {
 		try {
 			ResultSet books = this.statement.executeQuery("Select * from Book");
@@ -111,10 +145,14 @@ public class BookQueries {
 			e.printStackTrace();
 			return new ArrayList<Book>();
 		} catch (IndexOutOfBoundsException e) {
-			System.out.println("No person with that mail");
 			return new ArrayList<Book>();
 		}
 	}
+	/**
+	 *  Find the book with the specified id and returns it.
+	 * @param id
+	 * @return
+	 */
 	public Book getById(int id) {
 		try {
 			ResultSet rs = this.statement.executeQuery("select * from Book where Id = " + id);
@@ -126,6 +164,11 @@ public class BookQueries {
 			return new Book(id, null, null, null, null, id);
 		}
 	}
+	/**
+	 * Returns books with titels that correspond to the input
+	 * @param Title
+	 * @return
+	 */
 	public ArrayList<Book> getByTitle(String Title){
 		try {
 			ResultSet books = this.statement.executeQuery("Select * from Book where Title like '%"+Title+"%'" );
@@ -136,6 +179,11 @@ public class BookQueries {
 			return new ArrayList<Book>();
 		}
 	}
+	/**
+	 *  Returns books that matches with the inserted category string
+	 * @param Category
+	 * @return
+	 */
 	public ArrayList<Book> getByCatagory(String Category){
 		try {
 			ResultSet books = this.statement.executeQuery("Select * from Book where Id in(select Bookid from Category where Name LIKE '%"+Category+"%')");
@@ -146,6 +194,11 @@ public class BookQueries {
 			return new ArrayList<Book>();
 		}
 	}
+	/**
+	 *  Returns all copies that have the book id inserted
+	 * @param id
+	 * @return
+	 */
 	public ArrayList<Copy> getCopys(int id){
 		try {
 			ResultSet rs = this.statement.executeQuery("select * from Copy where BookId=" +id);
@@ -170,6 +223,11 @@ public class BookQueries {
 		}
 		return copies;
 	}
+	/**
+	 * Take a resultset of books as parameter and return the 
+	 * @param books
+	 * @return
+	 */
 	private ArrayList<Book> toBookArrayList(ResultSet books){
 		ArrayList<Book> book = new ArrayList<Book>();
 		try {
