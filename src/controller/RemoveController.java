@@ -17,7 +17,6 @@ public class RemoveController {
 			a_view.displayRemoveMenu();
 			char[] removeMenuOptions = a_view.getRemoveMenuOptions();
 			int removeInput = a_view.getInput();
-			System.out.println(String.valueOf(removeInput));
 			if (removeInput == removeMenuOptions[0])
 			{
 				a_view.displayInputInfo(new String[] {"Book copy Id"});

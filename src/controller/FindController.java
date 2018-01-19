@@ -99,7 +99,6 @@ public class FindController {
 						// find book by id
 						int bookId = Integer.parseInt(a_view.getStringInput());
 						Book b = lib.getBookById(bookId);
-						System.out.println(b.getTitle());
 					}
 					else if (findInput == findBookMenuOption[4])
 					{
