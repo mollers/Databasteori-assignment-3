@@ -11,6 +11,9 @@ public class LoanController {
 		this.a_view = a_view;
 		this.lib = lib;
 	}
+	/**
+	 * Menu options to loan return loans
+	 */
 	public void loanMenu() {
 		int leave = 1;
 		while(leave == 1) {
@@ -18,7 +21,7 @@ public class LoanController {
 			a_view.displayLoanMenu();
 			char[] loanMenuOptions = a_view.getLoanMenyOptions();
 			int loanInput = a_view.getInput();
-
+			// loan a new book
 			if (loanInput == loanMenuOptions[0])
 			{
 				a_view.displayInputInfo(new String[] {"Copy-Id", "Person-Id", "Date Loaned", "Date Expire"});
@@ -29,6 +32,7 @@ public class LoanController {
 				lib.addLoan(copyId, personId, dateLoaned, dateExpire);
 
 			}
+			//returned a loaned book on the copy id
 			else if (loanInput == loanMenuOptions[1])
 			{
 				a_view.displayInputInfo(new String[] {"Copy-Id", "Date Returned"});
