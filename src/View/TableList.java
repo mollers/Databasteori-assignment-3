@@ -3,7 +3,9 @@ package View;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.regex.Pattern;
-
+/*
+ * Creds to https://github.com/therealfarfetchd/crogamp/blob/master/src/com/github/mrebhan/crogamp/cli/TableList.java
+ */
 public class TableList {
 
 	private static final String[] BLINE = { "-", "\u2501" };
