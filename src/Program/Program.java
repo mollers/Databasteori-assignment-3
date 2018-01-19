@@ -5,6 +5,7 @@ import View.View;
 import controller.controller;
 import database.SQLite;
 
+// This class is simply used for starting the program
 public class Program {
 
 	public static void main(String[] args) {

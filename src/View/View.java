@@ -10,35 +10,33 @@ import Model.Loan;
 import Model.Person;
 
 public class View {
-	
+	Scanner scan = new Scanner(System.in);
 	public View() {
 		
 	}
-	Scanner scan = new Scanner(System.in);
+	
 	public void DisplayWelcomeMessage()
 	{
 		System.out.println("Welcome to the library database");
 		displayStartMenu();
 	}
 	
+
+	// Used for getting simple input from user like in the menus
 	public int getInput() 
 	{
 		char c = scan.nextLine().charAt(0);
 		return c;
 	}
-	
-	public int getIntInput()
-	{
-		int input = scan.nextInt();
-		return input;
-	}
-	
+
+	// Used for getting input to add a new Book, Copy, Person, Loan etc..
 	public String getStringInput()
 	{
 		String input = scan.nextLine();
 		return input;
 	}
 	
+	// The different menu options below are used for checking input against them
 	public char[] getStartMenuOptions()
 	{
 		return new char[] {'1', '2', '3', '4', 'q'};
@@ -77,6 +75,10 @@ public class View {
 		return new char[] {'1', '2', '3', '4', '5', 'B'};
 	}
 
+	/**
+	 * This function is used for generating input info to the view for the user
+	 * @param String array
+	 */
 	public void displayInputInfo(String[] inputs) {
 		String info = "Please enter info in following order: ";
 		for(int i = 0; i < inputs.length; i++) {
@@ -89,6 +91,8 @@ public class View {
 		}
 		System.out.println(info);
 	}
+	
+	// Simply used for create some space between the prints in the console
 	public void spacing()
 	{
 		for (int i = 0; i < 3; i++)
@@ -177,6 +181,12 @@ public class View {
 		System.out.println("B: Go to start menu");
 		System.out.println("Select option by entering the number followed by enter");
 	}
+	
+	/**
+	 * Used for creating table like prints with rows and columns of Persons from the database
+	 * when the database is querried to return all Persons
+	 * @param persons
+	 */
 	public void displayPersonList(ArrayList<Person> persons) {
 		TableList tableList = new TableList(7, "ID", "NAME", "MAIL", "PHONE", "ADRESS", "CITY", "ZIP").sortBy(0).withUnicode(true);
 		for(int i = 0; i < persons.size(); i++) {
@@ -185,6 +195,12 @@ public class View {
 		}
 		tableList.print();
 	}
+	
+	/**
+	 * Used for creating table like prints with rows and columns of Books from the database
+	 * when the database is querried to return all Books
+	 * @param books
+	 */
 	public void displayBookList(ArrayList<Book> books) {
 		TableList tableList = new TableList(6, "ID", "TITLE", "DESCRIPTION", "EDITION", "PUBLISHED", "SHELF NUMBER").sortBy(0).withUnicode(true);
 		for(int i = 0; i < books.size(); i++) {
@@ -193,6 +209,12 @@ public class View {
 		}
 		tableList.print();
 	}
+	
+	/**
+	 * Used for creating table like prints with rows and columns of Loans from the database
+	 * when the database is querried to return all Loans
+	 * @param loans
+	 */
 	public void displayLoanList(ArrayList<Loan> loans) {
 		TableList tableList = new TableList(6, "ID", "CopyId", "PersonId", "Data Loaned", "Date Loan Expire", "Date Returned").sortBy(0).withUnicode(true);
 		for(int i = 0; i < loans.size(); i++) {
@@ -201,6 +223,12 @@ public class View {
 		}
 		tableList.print();
 	}
+	
+	/**
+	 * Used for creating table like prints with rows and columns of Authors from the database
+	 * when the database is querried to return all Authors
+	 * @param authors
+	 */
 	public void displayAuthorList(ArrayList<Author> authors) {
 		TableList tableList = new TableList(2, "ID", "NAME").sortBy(0).withUnicode(true);
 		for(int i = 0; i < authors.size(); i++) {
@@ -209,20 +237,13 @@ public class View {
 		}
 		tableList.print();
 	}
+	
+	/**
+	 * Used for creating table like prints with rows and columns of Copies of a Book from the database
+	 * when the database is querried to return all Copies
+	 * @param copies
+	 */
 	public void displayCopyList(ArrayList<Copy> copies) {
-		TableList tableList = new TableList(3, "ID", "BOOK ID", "AVAILABLE").sortBy(0).withUnicode(true);
-		for(int i = 0; i < copies.size(); i++) {
-			Copy current = copies.get(i);
-			if(current.getAvailable() == 1) {
-				tableList.addRow(String.valueOf(current.getId()), String.valueOf(current.getBookId()), "True");
-			} else {
-				tableList.addRow(String.valueOf(current.getId()), String.valueOf(current.getBookId()), "False");
-			}
-			
-		}
-		tableList.print();
-	}
-	public void displayCategoryList(ArrayList<Copy> copies) {
 		TableList tableList = new TableList(3, "ID", "BOOK ID", "AVAILABLE").sortBy(0).withUnicode(true);
 		for(int i = 0; i < copies.size(); i++) {
 			Copy current = copies.get(i);

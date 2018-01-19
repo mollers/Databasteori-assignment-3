@@ -15,6 +15,7 @@ public class Library {
 		this.db = sql;
 	}
 
+	// Creates a Author object and adds the author to the database
 	public void addAuthor( String name)
 	{
 		int id = db.author().getMaxId() + 1;
@@ -22,36 +23,48 @@ public class Library {
 		db.author().add(author);
 	}
 
+	// Creates a Book object and adds the Book to the database
 	public void addBook(String title,  String description, String edition, String published,  int shelf) {
 		int id = db.book().getMaxId() + 100;
 		this.book = new Book(id, title, description, edition, published, shelf);
 		db.book().add(book);
 	}
+	
+	// Creates a Book-copy object and adds the Book-copy to the database
 	public void addBookCopy( int bookId)
 	{
 		int copyId = db.book().getMaxCopyId(bookId) + 1;
 		db.book().addCopy(copyId, bookId);
 	}
+	
+	// Creates a Person object and adds the Person to the database
 	public void addPerson( String zIP, String city, String adress, String name, String mail, String phoneNr) 
 	{
 		int id = db.person().getMaxId() + 1;
 		this.person = new Person(id, zIP, city, adress, name, mail, phoneNr);
 		db.person().add(person);
 	}
+	
+	// Creates a Loan object and adds the Loan to the database
 	public void addLoan( int copyId, int personId, String dateLoaned, String dataExpire, String dateReturned) 
 	{
 		int id = db.loan().getMaxId() + 1;
 		this.loan = new Loan(id, copyId, personId, dateLoaned, dataExpire, dateReturned);
 		db.loan().add(loan);
 	}
+	
+	// Adds a category to a specific Book by specifying the book-id of the Book
 	public void addCategoryToBook(int bookId, ArrayList<String> categories) 
 	{
 		db.book().addCategory(bookId, categories);
 	}
+	
+	// Adds a author to a specific Book by specifying book-id and one or more author-ids
 	public void addAuthorToBook(int bookId, ArrayList<Integer> authorsIds)
 	{
 		db.book().addAuthors(bookId, authorsIds);
 	}
+
 	public void addLoan(int copyId, int personId, String dateLoaned, String dateExpire) {
 		int id = db.loan().getMaxId() +1;
 		this.loan = new Loan(id, copyId, personId, dateLoaned, dateExpire,"");
