@@ -9,7 +9,7 @@ public class Library {
 	private Book book;
 	private Person person;
 	private Loan loan;
-	
+
 	public Library(SQLite sql)
 	{
 		this.db = sql;
@@ -37,11 +37,6 @@ public class Library {
 		this.person = new Person(id, zIP, city, adress, name, mail, phoneNr);
 		db.person().add(person);
 	}
-	public void addLoan( int copyId, int personId, String dateLoaned, String dataExpire, String dateReturned) {
-		int id = db.loan().getMaxId() + 1;
-		this.loan = new Loan(id, copyId, personId, dateLoaned, dataExpire, dateReturned);
-		db.loan().add(loan);
-	}
 	public void addCategoryToBook(int bookId, ArrayList<String> categories) 
 	{
 		db.book().addCategory(bookId, categories);
@@ -58,4 +53,69 @@ public class Library {
 	public void returnBook(int copyId, String dateReturned) {
 		db.loan().returnBook(copyId, dateReturned);
 	}
+
+	public void removeCopy(int copyId) {
+		db.book().removeCopy(copyId);
+	}
+
+	public void removePerson(int personId) {
+		db.person().remove(personId);
+	}
+
+	public ArrayList<Author> getAllAuthors() {
+		return db.author().getAll();
+	}
+
+	public ArrayList<Author> getAuthorsById(int id) {
+		return db.author().getByBook(id);
+	}
+
+	public ArrayList<Author> getAuthorByName(String name) {
+		return db.author().getByName(name);
+	}
+
+	public Author getAuthorById(int id) {
+		return db.author().getById(id);
+	}
+
+	public ArrayList<Book> getAllBooks() {
+		return db.book().getAll();
+	}
+
+	public ArrayList<Book> getBooksByTitle(String title) {
+		return db.book().getByTitle(title);
+	}
+
+	public ArrayList<Book> getBooksByCategory(String category) {
+		return db.book().getByCatagory(category);
+	}
+
+	public Book getBookById(int bookId) {
+		return db.book().getById(bookId);
+	}
+
+	public ArrayList<Copy> getBookCopies(int bookId) {
+		return db.book().getCopys(bookId);
+	}
+
+	public ArrayList<Person> getAllPersons() {
+		return db.person().getAll();
+	}
+
+	public ArrayList<Person> getPersonsByName(String name) {
+		return db.person().getByName(name);
+	}
+
+	public Person getPersonById(int id) {
+		return db.person().getById(id);
+	}
+
+	public Person getPersonsByMail(String mail) {
+		return db.person().getByMail(mail);
+	}
+
+	public ArrayList<Loan> getLoanByPersonId(int personId) {
+		return db.loan().getLoans(personId);
+	}
+
 }
