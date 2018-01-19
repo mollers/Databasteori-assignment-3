@@ -146,7 +146,7 @@ public class BookQueries {
 			return new ArrayList<Book>();
 		}
 	}
-	public ArrayList<Copy>getCopys(int id){
+	public ArrayList<Copy> getCopys(int id){
 		try {
 			ResultSet rs = this.statement.executeQuery("select * from Copy where BookId=" +id);
 			return this.toCopyArrayList(rs);

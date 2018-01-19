@@ -5,7 +5,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import Model.Book;
 import Model.Loan;
+import Model.Person;
 
 public class LoanQueries {
 	private Statement statement;
@@ -54,7 +56,7 @@ public class LoanQueries {
 			e.printStackTrace();
 			return new ArrayList<Loan>() ;
 		} catch (IndexOutOfBoundsException e) {
-			System.out.println("No person with that mail");
+			System.out.println("person has no loans");
 			return new ArrayList<Loan>();
 		}
 	}
@@ -66,9 +68,9 @@ public class LoanQueries {
 				int CopyId = loans.getInt("CopyId");
 				int PersonId = loans.getInt("PersonId");
 				String dateLoaned = loans.getString("dateLoaned");
-				String dateExpire = loans.getString("dateExpire");
+				String dataExpire = loans.getString("dataExpire");
 				String dateReturned = loans.getString("dateReturned");
-				Loan loann = new Loan(id, CopyId, PersonId, dateLoaned, dateExpire, dateReturned);
+				Loan loann = new Loan(id, CopyId, PersonId, dateLoaned, dataExpire, dateReturned);
 				loan.add(loann);
 			}
 		} catch (SQLException e) {
@@ -84,9 +86,11 @@ public class LoanQueries {
 			loanId= statement.executeQuery("select Id from Loan"
 					+ " where CopyId =" + copyId
 					+" and DateReturned is '' ").getInt("Id");
+			System.out.println("LoanId: " + loanId);
 			String query = "update Loan"
 					+ " set DateReturned =  " +"'" + dateReturned +"'"
 					+" where Id = " + loanId;
+			System.out.println(query);
 			statement.executeUpdate(query);
 			statement.executeUpdate("update Copy"
 					+ " set Available = 1"

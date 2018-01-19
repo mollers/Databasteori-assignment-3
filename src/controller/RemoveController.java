@@ -12,26 +12,29 @@ public class RemoveController {
 		this.lib = lib;
 	}
 	public void removeMenu() {
-		a_view.displayRemoveMenu();
-		char[] removeMenuOptions = a_view.getRemoveMenuOptions();
-		int addInput = a_view.getInput();
-		
-		if (addInput == removeMenuOptions[0])
-		{
-			a_view.displayInputInfo(new String[] {"Book copy Id"});
-			int copyId = Integer.parseInt(a_view.getStringInput());
-			lib.removeCopy(copyId);
-		}
-		else if (addInput == removeMenuOptions[1])
-		{
-			a_view.displayInputInfo(new String[] {"Person Id"});
-			int personId = Integer.parseInt(a_view.getStringInput());
-			lib.removePerson(personId);	
-		}
-		else if (addInput == removeMenuOptions[2])
-		{
-			
+		int leave = 1;
+		while(leave == 1) {
+			a_view.displayRemoveMenu();
+			char[] removeMenuOptions = a_view.getRemoveMenuOptions();
+			int removeInput = a_view.getInput();
+			System.out.println(String.valueOf(removeInput));
+			if (removeInput == removeMenuOptions[0])
+			{
+				a_view.displayInputInfo(new String[] {"Book copy Id"});
+				int copyId = Integer.parseInt(a_view.getStringInput());
+				lib.removeCopy(copyId);
+			}
+			else if (removeInput == removeMenuOptions[1])
+			{
+				a_view.displayInputInfo(new String[] {"Person Id"});
+				int personId = Integer.parseInt(a_view.getStringInput());
+				lib.removePerson(personId);	
+			}
+			else if (removeInput == 98 || removeInput == 66)
+			{
+				leave = 0;	
+			}
 		}
 	}
-	
+
 }
