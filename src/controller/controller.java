@@ -155,7 +155,7 @@ public class controller {
 			}
 			else if (addInput == removeMenuOptions[2])
 			{
-				
+				// back to start menu
 			}
 		}
 		else if (input == menuOptions[3])
@@ -197,7 +197,7 @@ public class controller {
 					a_view.displayAuthorList(temp);
 				}
 				else if(addInput == findAuthorOptions[4]) {
-					// back
+					// back to find menu
 				}
 				
 			}
@@ -257,7 +257,7 @@ public class controller {
 				}
 				else if (input == findBookMenuOption[5])
 				{
-					// back
+					// back to find menu
 				}
 			}
 			else if (addInput == findMenuOptions[2])
@@ -300,7 +300,7 @@ public class controller {
 					a_view.displayLoanList(sql.loan().getLoans(id));
 				}
 				else if (addInput == findPersonOptions[5]) {
-					
+					// go back to find menu
 				}
 			}
 			else if (addInput == findMenuOptions[3])
